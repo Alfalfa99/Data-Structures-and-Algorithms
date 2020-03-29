@@ -1,0 +1,76 @@
+# 								**LeetCode刷题记录**
+
+## 简单
+
+### 1.	两数之和
+
+通过哈希表的键值存储数组的值和键进行比对
+
+
+
+### 7.	整数反转
+
+```java
+class Solution {
+    public int reverse(int x) {
+        int res = 0 ;
+        while(x != 0){
+            int temp = x % 10 + res * 10;
+            //若发生溢出则下面该判断会为true,因为溢出后数字不确定,所以进行反操作不会活的原值
+            if((temp - x % 10) / 10 != res){
+                return 0 ;
+            }
+            res = temp ;
+            x /= 10 ;
+        }
+        return res ;
+    }
+}
+```
+
+
+
+### 9.	回文数
+
+```java
+//自己写的--思路:将整数反转后与原来的数字进行比较
+class Solution {
+    public boolean isPalindrome(int x) {
+       int y = x;
+        if (x < 0) {
+            return false;
+        }
+        if (x == 0) {
+            return true;
+        }
+        int res = 0;
+        while (x != 0) {
+            int temp = x % 10 + res * 10;
+            res = temp;
+            x /= 10;
+        }
+        if (y == res) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+//参考答案--思路:只需判断前面一半的数字与后面一半的反转数字是否相同即可
+class Solution {
+    public boolean isPalindrome(int x) {
+        if (x < 0 || (x % 10 == 0 && x != 0)) return false;	//末尾为0和小于0的数肯定为false
+        int revertedNumber = 0;
+        while (x > revertedNumber) {
+            revertedNumber = revertedNumber * 10 + x % 10;
+            x /= 10;
+        }
+        return x == revertedNumber || x == revertedNumber / 10;	//分开讨论x为偶数和x为奇数的情况
+    }
+}
+
+```
+
+
+
