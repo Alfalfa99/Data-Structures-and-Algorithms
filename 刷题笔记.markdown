@@ -4,7 +4,22 @@
 
 ### 1.	两数之和
 
-通过哈希表的键值存储数组的值和键进行比对
+```java
+//通过哈希表的键值存储数组的值和键进行比对
+public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int number = target - nums[i];
+            if (map.containsKey(number) && map.get(number)!= i){
+                return new int[]{i,map.get(number)};
+            }
+        }
+        throw new IllegalArgumentException(" ");
+    }
+```
 
 
 
@@ -16,7 +31,7 @@ class Solution {
         int res = 0 ;
         while(x != 0){
             int temp = x % 10 + res * 10;
-            //若发生溢出则下面该判断会为true,因为溢出后数字不确定,所以进行反操作不会活的原值
+            //若发生溢出则下面该判断会为true,因为溢出后数字不确定,所以进行反操作不会获得原值
             if((temp - x % 10) / 10 != res){
                 return 0 ;
             }
@@ -73,4 +88,118 @@ class Solution {
 ```
 
 ​																																					--2020/3/29
+
+
+
+
+
+### 13.	罗马数字转整数
+
+```java
+/*个人代码,思路:
+通过HashMap存储字符与值的对,再遍历字符数组如果后一位的值大于前一位的值则说明两个字符为一个数,否则一个字符一个数*/
+public int romanToInt(String s) {
+        char[] chars = s.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<>(7);
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+        int total = 0;
+        if (chars.length == 1){
+            total+=map.get(chars[0]);
+            return total;
+        }
+        for (int i = 0; i < chars.length; i++) {
+            if (i+1>=chars.length) {
+                total+=map.get(chars[i]);
+                break;
+            }
+            if (map.get(chars[i]) < map.get(chars[i+1])) {
+                total += map.get(chars[i + 1]) - map.get(chars[i]);
+                i++;
+            } else {
+                total += map.get(chars[i]);
+            }
+        }
+        if (total > 3999 && total < 1){
+            throw new IllegalArgumentException();
+        }
+        return total;
+    }
+```
+
+
+
+
+
+### 14.	最长公共前缀
+
+```java
+public String longestCommonPrefix(String[] strs) {
+        //数组长度为0直接返回
+        if (strs.length == 0) {
+            return "";
+        }
+        //初始化公共前缀
+        String prefix = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            //如果当前串与公共前缀不相等,进入while
+            while(strs[i].indexOf(prefix) != 0) {
+                //将公共前缀的最后一位删除
+                prefix = prefix.substring(0, prefix.length() - 1);
+                //如果公共前缀删除完毕仍未找到相同部分则返回
+                if (prefix.equals("")) {
+                    return "";
+                }
+            }
+        }
+        return prefix;
+    }
+```
+
+
+
+
+
+### 20.	括号匹配(栈)
+
+```java
+//栈的用法
+		if (s.length() == 0) {
+            return true;
+        }
+        if ((s.length() & 1) == 1) {
+            return false;
+        }
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            switch (s.charAt(i)) {
+                case '(':
+                case '[':
+                case '{':
+                    stack.push(s.charAt(i));
+                    continue;
+                case ')':
+                    if (stack.isEmpty() || stack.pop() != '(') {
+                        return false;
+                    }
+                    continue;
+                case ']':
+                    if (stack.isEmpty() || stack.pop() != '[') {
+                        return false;
+                    }
+                    continue;
+                case '}':
+                    if (stack.isEmpty() || stack.pop() != '{') {
+                        return false;
+                    }
+                    continue;
+            }
+        }
+        return stack.isEmpty();
+```
 
