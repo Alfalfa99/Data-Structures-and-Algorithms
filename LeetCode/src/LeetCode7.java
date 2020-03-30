@@ -2,10 +2,6 @@ import java.util.HashMap;
 
 public class LeetCode7 {
     public static void main(String[] args) {
-        int i = 100000;
-        int i2 = 1000000000;
-        System.out.println(i*i2);
-
     }
 
     public int reverse(int x) {
