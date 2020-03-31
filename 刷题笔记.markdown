@@ -203,3 +203,78 @@ public String longestCommonPrefix(String[] strs) {
         return stack.isEmpty();
 ```
 
+
+
+
+
+### 21.	合并两个升序链表
+
+```java
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+//通过递归写法
+public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) {//当某一链表没有节点后直接返回另一个链表即可
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        if (l1.val < l2.val) {
+            l1.next = mergeTwoLists(l1.next, l2);	//  l1的当前节点被使用过,将l1的下一节点继续放入递归
+            return l1;	//return l1 相当于把链表中的箭头指向l1中第一个未使用的节点
+        } else {
+            l2.next = mergeTwoLists(l1, l2.next);	//	l2的当前节点被使用过,将l2的下一节点继续放入递归
+            return l2;	//return l2 相当于把链表中的箭头指向l2中第一个未使用的节点
+        }
+    }
+
+```
+
+
+
+
+
+### 26.	删除数组中重复数
+
+```java
+public int removeDuplicates(int[] nums) {
+        if (nums.length < 2) return nums.length;
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i]!=nums[j]){	//双指针移动
+                j++;
+                nums[j] = nums[i];
+            }
+        }
+        return j+1;
+    }
+```
+
+
+
+
+
+### 27.	删除数组中指定数
+
+```java
+public int removeElement(int[] nums, int val) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {	//如果遇到非目标数则填充数组
+                nums[j++] = nums[i];
+            }
+        }
+        return j + 1;
+    }
+```
+
