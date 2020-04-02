@@ -364,17 +364,72 @@ public int maxSubArray(int[] nums) {
     }
 ```
 
+​																																							2020/4/1
 
 
 
+### 58.	最后一个单词的长度
+
+```java
+public static int lengthOfLastWord(String s) {
+        char[] chars = s.trim().toCharArray();  //调用.trim()方法删除字符串首末的空格
+        if(chars.length == 0){  //如果删除了空格之后的字符串长度为空则返回
+            return 0;
+        }
+        for(int i = chars.length -1; i >=0; i --){  
+            if(chars[i] == ' ' ){   //从尾往前,如果遇到空格则说明最后一个字符串找完了
+                return chars.length-1-i;    //返回长度-空格的位置-1
+            }
+            if(i == 0){ //没有找到空格,说明全都是一个单词
+                return chars.length;    //返回长度
+            }
+        }
+        return 0;
+    }
+```
 
 
 
+​	
+
+### 59.	int数组加一
+
+```java
+public static int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] != 9) {	//从末尾开始如果有非9的位数就+1
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;	//为9的位数置零
+        }
+        digits = new int[digits.length + 1];	//最坏情况,整个数组都是9,需要添加一位
+        digits[0] = 1;	//将第一位置零,其他位默认值为0
+        return digits;
+    }
+```
 
 
 
+### 67.	两个二进制数求和
 
+```java
+public static String addBinary(String a, String b) {
+        int ca = 0;
+        StringBuilder sb = new StringBuilder();
+        for (int i = a.length() - 1, j = b.length() - 1; i > 0 && j > 0; i--, j--) {
+            int sum = ca;
+            sum += i > 0 ? a.charAt(i) - '0' : 0;   //如果串a读完了就自动补0
+            sum += j > 0 ? b.charAt(j) - '0' : 0;   //如果串b读完了就自动补0;
+            sb.append(sum % 2);                     //当前位置的数是否超过1,如果超过就取余
+            ca = sum / 2;                           //把超过1的数作为余数放入下一位的运算
+        }
+        sb.append(ca == 1 ? ca : "");   //循环结束后还有进位数则最后填1
+        return sb.reverse().toString(); //将字符串反转获得目标串,因为我们是从小位开始填充的
+    }
+```
 
+​																																								2020/4/2
 
 
 
