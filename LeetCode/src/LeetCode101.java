@@ -3,9 +3,9 @@ public class LeetCode101 {
         TreeNode p = new TreeNode(1);
         p.left = new TreeNode(2);
         p.right = new TreeNode(2);
-        p.left.left = new TreeNode(3);
-        p.left.right = new TreeNode(4);
-        p.right.left = new TreeNode(4);
+//        p.left.left = new TreeNode(3);
+        p.left.right = new TreeNode(3);
+//        p.right.left = new TreeNode(4);
         p.right.right = new TreeNode(3);
         System.out.println(isSymmetric(p));
     }
@@ -21,34 +21,23 @@ public class LeetCode101 {
     }
 
     public static boolean isSymmetric(TreeNode root) {
-        StringBuilder sb = new StringBuilder();
-        root = degui(root, sb);
-        System.out.println(sb);
-        if (sb.length() == 1) {
+        if (root == null){
             return true;
         }
-        for (int i = 1; i < sb.length() - 1; i++) {
-            if (sb.charAt(i) == sb.charAt(i + 1)) {
-                System.out.println(sb.charAt(i));
-                System.out.println(sb.charAt(i + 1));
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
+        return degui(root.left,root.right);
     }
 
-    public static TreeNode degui(TreeNode p, StringBuilder sb) {
-        if (null == p) {
-            return p;
+    public static Boolean degui(TreeNode l, TreeNode r) {
+        if (l == null && r == null) {
+            return true;
+        }
+        if (l == null || r == null) {
+            return false;
+        }
+        if (l.val == r.val){
+            return degui(l.left,r.right) && degui(l.right,r.left);
         } else {
-            sb.append(p.val);
+            return false;
         }
-        if (p != null) {
-            degui(p.left, sb);
-            degui(p.right, sb);
-        }
-        return p;
     }
 }
