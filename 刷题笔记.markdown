@@ -615,3 +615,29 @@ public static class TreeNode {
 
 
 
+### 108.	将有序数组转化为二叉搜索树
+
+```java
+int nums[];
+
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if (nums.length == 0) {
+            return null;
+        }
+        this.nums = nums;
+        return degui(0, nums.length - 1);
+    }
+
+//思路:利用分治的思想将整个数组分半,第一次找到的节点即为根节点,从左边找到的第一个节点为根节点的左孩子,右边同理
+    public TreeNode degui(int left, int right) {
+        if (left > right){
+            return null;
+        }
+        int mid = (left + right) / 2;
+        TreeNode treeNode = new TreeNode(this.nums[mid]);
+        treeNode.left = degui(left,mid-1);	
+        treeNode.right = degui(mid+1,right);
+        return treeNode;
+    }
+```
+
