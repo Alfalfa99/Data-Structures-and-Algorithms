@@ -121,6 +121,87 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
 
 
 
+#### 118.	杨辉三角前n行
+
+```java
+public List<List<Integer>> generate(int numRows) {
+        ArrayList<List<Integer>> arrayList = new ArrayList<>();
+        if (numRows == 0){
+            return arrayList;
+        }
+        for (int i = 0; i < numRows; i++) {
+            ArrayList<Integer> list = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                if (i == 0 || j == 0 || i == j){
+                    list.add(1);
+                } else {
+                    list.add(arrayList.get(i-1).get(j-1)+arrayList.get(i-1).get(j));
+                }
+            }
+            arrayList.add(list);
+        }
+        return arrayList;
+    }
+```
+
+
+
+#### 119.	杨辉三角第n行
+
+```java
+public List<Integer> getRow(int rowIndex) {
+    //从0行开始数,第n行有n+1个数
+    //当n >=2 的时候开始执行内层循环,将数据置于第1~n位,首位和末尾直接设置为1
+        List<Integer> cur = new ArrayList<>();
+        cur.add(1);	
+        for (int i = 1; i <= rowIndex; i++) {
+            for (int j = i - 1; j > 0; j--) {
+                cur.set(j, cur.get(j - 1) + cur.get(j));
+            }
+            cur.add(1);	//末尾设为1
+        }
+        return cur;
+    }
+```
+
+
+
+#### 121.	求数组中的最大差值
+
+```java
+public int maxProfit(int[] prices) {
+		//前提:只能是后边的数组元素减去前边的数组元素
+        int minprice = Integer.MAX_VALUE;	//设置最小值
+        int maxprofit = 0;	//设置最大利润
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < minprice)
+                minprice = prices[i];	//如果当前值小于最小值,更新最小值
+            else if (prices[i] - minprice > maxprofit)	//如果当前值减去最小值大于当前最大利润	
+                maxprofit = prices[i] - minprice;	//更新最大利润
+        }
+        return maxprofit;
+    }
+```
+
+
+
+
+
+#### 122.	求数组中的差值之和
+
+```java
+//思路:如果当前项大于上一项,则总和增加为这两项的差值
+public static int maxProfit(int[] prices) {
+        int maxprofit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i-1]){
+                maxprofit += prices[i] - prices[i-1];
+            }
+        }
+        return maxprofit;
+    }
+```
+
 
 
 
@@ -368,6 +449,37 @@ public static String addBinary(String a, String b) {
 ```
 
 ​		
+
+#### 125.	验证回文字符串
+
+```java
+public static boolean isPalindrome(String s) {
+        if (s == null){
+            return true;
+        }
+        if (s.length() == 0){
+            return true;
+        }
+        s = s.toLowerCase();
+        for (int i = 0,j = s.length()-1; i != j;) {
+            if ((s.charAt(i) >= 'a' && s.charAt(i) <= 'z') || (s.charAt(i) >= '0' && s.charAt(i)<= '9')){
+                if (s.charAt(j) >= 'a' && s.charAt(j) <= 'z' || s.charAt(j) >= '0' && s.charAt(j)<= '9'){
+                    if (s.charAt(i) == s.charAt(j)){
+                        j--;
+                        i++;
+                        continue;
+                    }
+                    return false;
+                } else {
+                    j--;
+                }
+            } else {
+                i++;
+            }
+        }
+        return true;
+    }
+```
 
 
 
