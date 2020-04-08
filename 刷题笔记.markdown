@@ -206,6 +206,22 @@ public static int maxProfit(int[] prices) {
 
 
 
+#### 136.	只出现一次的数字
+
+```java
+public static int singleNumber(int[] nums) {
+        int ans = 0;
+        for (int i = 0; i < nums.length; i++) {
+            ans ^= nums[i];		//数组中每两个相同的数异或之后都为0,0与只出现过一次的数异或为该数
+        }
+        return ans;
+    }
+```
+
+
+
+
+
 ## 数字
 
 ### 简单
@@ -530,6 +546,51 @@ public static boolean isValid(String s) {
 
 
 
+#### 155.	最小栈
+
+```java
+class MinStack {
+		Stack<Integer> stack;
+        int min;
+        /** initialize your data structure here. */
+        public MinStack() {
+            stack = new Stack();
+            min = Integer.MAX_VALUE;
+        }
+
+        public void push(int x) {
+            if(min >= x){
+                stack.push(min);
+                min = x;
+            }
+            stack.push(x);
+        }
+
+        public void pop() {
+            if(min == stack.pop()){
+                min = stack.pop();
+            }
+        }
+
+        public int top() {
+            return stack.peek();
+        }
+
+        public int getMin() {
+            return min;
+        }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+```
+
 
 
 
@@ -583,6 +644,33 @@ public ListNode deleteDuplicates(ListNode head) {
             }
         }
         return head;
+    }
+```
+
+
+
+
+
+#### 141.	环形链表
+
+```java
+//思路:利用快慢指针进行判断
+//如果为环形链表快指针一定会追上慢指针(套一圈)
+//如果快指针到尾则说明不是环形链表;
+public static boolean hasCycle(ListNode head) {
+       if (head == null || head.next == null) {
+            return false;
+        }
+        ListNode p1 = head.next;
+        ListNode p2 = head;
+        while (p1 != null && p1.next != null) {	//不能写反条件,否则会出错
+            if (p1 == p2) {
+                return true;
+            }
+            p1 = p1.next.next;
+            p2 = p2.next;
+        }
+        return false;
     }
 ```
 
