@@ -222,6 +222,34 @@ public static int singleNumber(int[] nums) {
 
 
 
+#### 167.	两数之和2
+
+```java
+//和两数之和1不同,本题为递增的数组,直接从两头开始找省时省事
+public static int[] twoSum(int[] numbers, int target) {
+        if (numbers.length == 0){
+            throw new IllegalArgumentException("");
+        }
+        int i = 0, j = numbers.length-1;
+        while (i<j){
+            if (target > numbers[i] + numbers[j]){
+                i++;
+            }
+            if (target < numbers[i] + numbers[j]){
+                j--;
+            }
+            if (target == numbers[i] + numbers[j]){
+                return new int[]{i+1,j+1};
+            }
+        }
+        throw new IllegalArgumentException("");
+    }
+```
+
+
+
+
+
 ## 数字
 
 ### 简单
@@ -501,6 +529,26 @@ public static boolean isPalindrome(String s) {
 
 
 
+#### 168.	进制问题
+
+```java
+//本题'A' = 1 ,'B' = 2,由于'Z' = 'A' + 25 , n = 26时输出'Z',所以我们要对n-1才能在取余之后获取正确的数值
+
+public static String convertToTitle(int n) {
+        StringBuilder stringBuilder = new StringBuilder();
+        while (n != 0) {
+            n --;//这里稍作处理，因为它是从1开始
+            stringBuilder.insert(0,(char)(n % 26 + 'A'));
+            n /= 26;
+        }
+        return stringBuilder.toString();
+    }
+```
+
+
+
+
+
 ## 栈
 
 ### 简单
@@ -671,6 +719,24 @@ public static boolean hasCycle(ListNode head) {
             p2 = p2.next;
         }
         return false;
+    }
+```
+
+
+
+#### 160.	相交链表
+
+```java
+public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        ListNode p1 = headA,p2 = headB;
+        while (p1 != p2) {	//让p1,p2两个指针都遍历完两根链表,如果有相交的部分,则p1一定等于p2
+            p1 = p1 == null?headB:p1.next;
+            p2 = p2 == null?headA:p2.next;
+        }
+        return p1;
     }
 ```
 
