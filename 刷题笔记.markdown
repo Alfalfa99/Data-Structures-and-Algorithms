@@ -248,6 +248,30 @@ public static int[] twoSum(int[] numbers, int target) {
 
 
 
+#### 169.	寻找数组中出现次数大于一半的数
+
+```java
+//解法1:候选人算法,如果当前候选人并非上次记录的候选人,则上次记录的候选人票数减一
+public static int majorityElement(int[] nums) {
+        int count = 0;
+        int candidate = nums[0];
+        for (int num : nums) {
+            if (count == 0){
+                candidate = num;
+            }
+            count += (candidate == num)? 1:-1;
+        }
+        return candidate;
+}
+//解法2:先进行排序,出现次数大于一半的数的位置一定会出现在nums.lenth/2
+public static int majorityElement(int[] nums) {
+	Arrays.sort(nums);
+	return nums[nums.length/2];
+}
+```
+
+
+
 
 
 ## 数字
@@ -319,6 +343,23 @@ class Solution {
 ```
 
 ​																																		
+
+#### 172.	阶乘后的零
+
+```java
+//纯数学题,淦!
+public static int trailingZeroes(int n) {
+        if (n < 5) {
+            return 0;
+        }
+        int count = 0;
+        while (n > 0) {
+            n /= 5;
+            count += n;
+        }
+        return count;
+    }
+```
 
 
 
@@ -546,6 +587,22 @@ public static String convertToTitle(int n) {
 ```
 
 
+
+#### 171.	进制问题2
+
+```java
+//从字母转回数字,26进制转10进制
+public static int titleToNumber(String s) {
+        if (s == null || s == ""){
+            return -1;
+        }
+        int total = 0;
+        for (int i = 0; i < s.length(); i++) {
+            total = s.charAt(i) - 64 + total*26;
+        }
+        return total;
+    }
+```
 
 
 
