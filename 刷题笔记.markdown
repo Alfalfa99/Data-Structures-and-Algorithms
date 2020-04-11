@@ -79,7 +79,7 @@ public int searchInsert(int[] nums, int target) {
 
 
 
-#### 59.	int数组加一
+#### 66.	int数组加一
 
 ```java
 public static int[] plusOne(int[] digits) {
