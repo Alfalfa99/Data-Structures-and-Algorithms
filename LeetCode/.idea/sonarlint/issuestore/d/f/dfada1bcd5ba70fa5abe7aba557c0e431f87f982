@@ -1,0 +1,10 @@
+
+s	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(Úšïüÿÿÿÿ
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+k
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÑÖÙƒıÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ÌÊé†
+h
+java:S3776	"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Üö¬Õ
+7	java:S131""Add a default case to this switch.(•Ï

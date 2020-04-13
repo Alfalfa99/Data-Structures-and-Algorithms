@@ -820,7 +820,30 @@ public int maxSubArray(int[] nums) {
     }
 ```
 
-​																																							
+​				
+
+#### 62.	不同路径
+
+```java
+public static int uniquePaths(int m, int n) {
+        int[][] dp = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                //当在数组的最上一行或最左一列时,只能由上一格向右或向下走一步而得,只有一种可能性.
+                if (i == 0 || j == 0){	
+                    dp[i][j] = 1;
+                } else {
+                    dp[i][j] = dp[i-1][j]+dp[i][j-1];
+                }
+            }
+        }
+        return dp[m-1][n-1];
+    }
+```
+
+
+
+​																																			
 
 #### 70.	爬楼梯(动态规划)
 
@@ -842,7 +865,53 @@ public static int climbStairs(int n) {
 
 
 
-​	
+
+
+#### 72.	编辑距离
+
+```java
+//本题可以这样看,如果增加字母则往下走,如果删除字母则往右走,如果替换则在左,左上,上三个元素中取最小+1
+//若两个字母相等则不做处理
+/* word1 = "cbd"
+ * word2 = "cat"
+ *
+ *	0	1	2	3
+ *	1	0	1	2
+ *	2	1	1	2
+ *	3	2	2	2
+ */
+public static int minDistance(String word1, String word2) {
+        int l1 = word1.length();
+        int l2 = word2.length();
+        if (l1 * l2 == 0) {
+            return l1+l2;
+        }
+        int[][] dp = new int[l1+1][l2+1];
+        for (int i = 0; i < l1 + 1; i++) {
+            dp[i][0] = i;
+        }
+        for (int i = 0; i < l2 + 1; i++) {
+            dp[0][i] = i;
+        }
+        for (int i = 1; i <= l1; i++) {
+            for (int j = 1; j <= l2; j++) {
+                if (word1.charAt(i-1) == word2.charAt(j-1)) {
+                    dp[i][j] = dp[i-1][j-1];  //左上角的坐里的步数一定是(左,左上,上)三者里最小的数(或之一)
+                } else {
+                    //从dp[i-1][j],dp[i-1][j-1],dp[i][j-1]里边选取最小的加1
+                    dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]),dp[i-1][j-1]) + 1;
+                }
+            }
+        }
+        return dp[l1][l2];
+    }
+```
+
+
+
+
+
+
 
 ## 查找
 

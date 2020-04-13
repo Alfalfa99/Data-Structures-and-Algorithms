@@ -1,6 +1,9 @@
 import java.util.HashMap;
 
 public class LeetCode1 {
+    /**
+     *     两数之和,通过HashMap的键存储值,值存储数组下标
+     */
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
