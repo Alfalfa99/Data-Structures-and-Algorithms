@@ -21,3 +21,9 @@ C
 src/LeetCode64.java,7\0\709d97b222ac3e2fe9c04b7598b222edbfa2887f
 C
 src/LeetCode72.java,f\3\f345446f1e5b183ece1f6a8ab024080153497207
+B
+src/LeetCode5.java,0\9\093d8afaa4f8e03d7f1944f4cd1ee2cb03928c69
+C
+src/LeetCode63.java,9\f\9ff4a16fb104d74f0ddbaeefc6ae3fa58dfecc4f
+C
+src/LeetCode91.java,c\2\c2c0c881085c306087c0ea13925cf3805eeebdde
