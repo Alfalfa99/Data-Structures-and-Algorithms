@@ -57,3 +57,5 @@ D
 src/LeetCode509.java,c\3\c321a295a67f26cf8c96425c37a465a024424b9c
 E
 src/LeetCode1137.java,2\3\23937e5415db7ce085bb12ea2b4d53dbb2a512ae
+E
+src/LeetCode1143.java,5\2\52b26a91595df7972795bedb30b987cf87d65776
