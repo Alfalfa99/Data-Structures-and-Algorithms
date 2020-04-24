@@ -65,3 +65,11 @@ C
 src/LeetCode53.java,7\2\7227a425afab32cfb356edb97a73c8674bc27eac
 D
 src/LeetCode152.java,8\1\817e3eea4db9d101261f4309d478aa4c526bec42
+B
+src/JZoffer04.java,7\4\7450d28a1cb0cffaac8fc3b8d33e936643dc5108
+D
+src/LeetCode240.java,4\9\493f33c416edfa0d8392fd055f1eff8e323216c0
+B
+src/JZoffer03.java,1\0\1098cb173ada7ea2657d32ff7b6b734466b2f716
+B
+src/JZoffer05.java,4\0\40357acb03bb14db8e89fdf1c3cab0a2079c3014

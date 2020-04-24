@@ -272,6 +272,43 @@ public static int majorityElement(int[] nums) {
 
 
 
+### 中等
+
+#### 240.	搜索二维矩阵
+
+```java
+//从二维数组的右上角开始找
+public static boolean findNumberIn2DArray(int[][] matrix, int target) {
+        int row = matrix.length;
+        if (row == 0) {
+            return false;
+        }
+        int col = matrix[0].length;
+        if (col == 0) {
+            return false;
+        }
+        int i = 0;
+        int j = col - 1;
+        while (i < row && j >= 0) {
+            if (matrix[i][j] == target) {
+                return true;
+            }
+            if (matrix[i][j] > target) {
+                j--;
+            } else {
+                i++;
+            }
+        }
+        return false;
+    }
+```
+
+
+
+
+
+
+
 
 
 ## 数字
@@ -1584,6 +1621,105 @@ public static boolean hasPathSum(TreeNode root, int sum) {
             }
         }
         return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val);
+    }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 剑指Offer
+
+## 3.	数组中的重复数
+
+```java
+//直接打表,没什么好说的
+    public int findRepeatNumber(int[] nums) {
+        int[] num = new int[nums.length];
+        for(int i = 0; i < nums.length; i++){
+            num[nums[i]]++;
+            if (num[nums[i]]>1){
+                return nums[i];
+            }
+        }
+        return 0;
+    }
+```
+
+
+
+
+
+## 4.	二维数组中查找数
+
+```java
+//本题和LeetCode240一样
+public static boolean findNumberIn2DArray(int[][] matrix, int target) {
+        int row = matrix.length;
+        if (row == 0) {
+            return false;
+        }
+        int col = matrix[0].length;
+        if (col == 0) {
+            return false;
+        }
+        int i = 0;
+        int j = col - 1;
+        while (i < row && j >= 0) {
+            if (matrix[i][j] == target) {
+                return true;
+            }
+            if (matrix[i][j] > target) {
+                j--;
+            } else {
+                i++;
+            }
+        }
+        return false;
+    }
+```
+
+
+
+## 5.	替换空格
+
+```java
+public static String replaceSpace(String s) {
+        int len = s.length();
+        StringBuilder sb  = new StringBuilder();
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            if (c == ' '){
+                sb.append("%20");
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
 ```
 
