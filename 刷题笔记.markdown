@@ -305,7 +305,44 @@ public static boolean findNumberIn2DArray(int[][] matrix, int target) {
 
 
 
+#### 153.	旋转数组的最小值
 
+```java
+public int findMin(int[] nums) {
+        if (nums.length == 0){
+            throw new IllegalArgumentException();
+        }
+        for(int i = 1; i < nums.length; i++){
+            if (nums[i] < nums[i-1]){
+                return nums[i];
+            }
+        }
+        return nums[0];
+    }
+```
+
+
+
+
+
+### 困难
+
+#### 154.	旋转数组的最小值II
+
+```java
+//与153相同
+public int minArray(int[] nums) {
+        if (nums.length == 0){
+            throw new IllegalArgumentException();
+        }
+        for(int i = 1; i < nums.length; i++){
+            if (nums[i] < nums[i-1]){
+                return nums[i];
+            }
+        }
+        return nums[0];
+    }
+```
 
 
 
@@ -1791,6 +1828,98 @@ public static int[] reversePrint(ListNode head) {
 
 
 
+## 7.※先序中序建立二叉树
+
+```java
+// 使用全局变量是为了让递归方法少传一些参数，不一定非要这么做
+
+    private Map<Integer, Integer> reverses;
+    private int[] preorder;
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        int preLen = preorder.length;
+        int inLen = inorder.length;
+
+        // 可以不做判断，因为题目中给出的数据都是有效的
+        if (preLen != inLen) {
+            return null;
+        }
+
+        this.preorder = preorder;
+
+        // 以空间换时间，否则，找根结点在中序遍历中的位置需要遍历
+        reverses = new HashMap<>(inLen);
+        for (int i = 0; i < inLen; i++) {
+            reverses.put(inorder[i], i);
+        }
+
+        return buildTree(0, preLen - 1, 0, inLen - 1);
+    }
+
+    /**
+     * 根据前序遍历数组的 [preL, preR] 和 中序遍历数组的 [inL, inR] 重新组建二叉树
+     *
+     * @param preL 前序遍历数组的区间左端点
+     * @param preR 前序遍历数组的区间右端点
+     * @param inL  中序遍历数组的区间左端点
+     * @param inR  中序遍历数组的区间右端点
+     * @return 构建的新二叉树的根结点
+     */
+    private TreeNode buildTree(int preL, int preR,
+                               int inL, int inR) {
+        if (preL > preR || inL > inR) {
+            return null;
+        }
+        // 构建的新二叉树的根结点一定是前序遍历数组的第 1 个元素
+        int pivot = preorder[preL];
+        TreeNode root = new TreeNode(pivot);
+
+        int pivotIndex = reverses.get(pivot);
+
+        // 这一步得画草稿，计算边界的取值，必要时需要解方程，并不难
+        root.left = buildTree(preL + 1, preL + (pivotIndex - inL), inL, pivotIndex - 1);
+        root.right = buildTree(preL + (pivotIndex - inL) + 1, preR, pivotIndex + 1, inR);
+        return root;
+    }
+
+```
+
+
+
+## 9.	利用两个栈实现队列
+
+```java
+static class CQueue {
+        Stack<Integer> stack1;
+        Stack<Integer> stack2;
+        public CQueue() {
+            stack1 = new Stack();
+            stack2 = new Stack();
+        }
+
+        public void appendTail(int value) {
+            stack2.add(value);
+        }
+
+        public int deleteHead() {
+            if (stack1.isEmpty()){
+                if (stack2.isEmpty()){
+                    return -1;
+                } else {
+                    while (!stack2.empty()) {
+                        stack1.push(stack2.pop());
+                    }
+                }
+            }
+            return stack1.pop();
+        }
+    }
+```
+
+
+
+
+
 ## 10-1.	斐波那契数列
 
 ```java
@@ -1831,6 +1960,26 @@ public static int numWays(int n) {
             dp[i] = (dp[i-1] +dp[i - 2]) % 1000000007;
         }
         return dp[n];
+    }
+```
+
+
+
+
+
+## 11.	旋转数组的最小值
+
+```java
+public int minArray(int[] numbers) {
+        if (numbers.length == 0){
+            throw new IllegalArgumentException();
+        }
+        for(int i = 1; i < numbers.length; i++){
+            if (numbers[i] < numbers[i-1]){
+                return numbers[i];
+            }
+        }
+        return numbers[0];
     }
 ```
 
