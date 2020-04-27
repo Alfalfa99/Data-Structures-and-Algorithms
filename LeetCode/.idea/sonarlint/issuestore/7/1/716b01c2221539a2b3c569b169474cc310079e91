@@ -1,13 +1,13 @@
 
-m
-java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(•šê8§Ÿ¢¶›.
 r
 java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Èâõ²ùÿÿÿÿ8§Ÿ¢¶›.
 M
 java:S1128"1Remove this unused import 'java.util.LinkedList'.(»Äğ18ıî¢¶›.
-r
-java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Èâõ²ùÿÿÿÿ8§Ÿ¢¶›.
 I
 java:S1128",Remove this unused import 'java.util.Queue'.(Äá™ô8§Ÿ¢¶›.
 m
 java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(•šê8§Ÿ¢¶›.
+m
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(•šê8§Ÿ¢¶›.
+r
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Èâõ²ùÿÿÿÿ8§Ÿ¢¶›.
