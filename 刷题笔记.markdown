@@ -439,6 +439,23 @@ public static int trailingZeroes(int n) {
 
 
 
+#### 191.	二进制数中1的个数
+
+```java
+public static int hammingWeight(int n) {
+        int  cnt = 0;
+        while(n!=0){
+            cnt++;
+            n&=(n-1);
+        }
+        return cnt;
+    }
+```
+
+
+
+
+
 
 
 ## 字符串
@@ -2161,4 +2178,21 @@ class Solution {
 ```
 
 
+
+
+
+## 15.	二进制中1的个数
+
+```java
+public static int hammingWeight(int n) {
+     int  cnt = 0;
+     while(n!=0){
+        cnt++;
+        n&=(n-1);
+     }
+	return cnt;
+}
+
+
+```
 

@@ -1,17 +1,14 @@
 public class JZoffer13 {
-    public static void main(String[] args) {
-        System.out.println(movingCount(38,15,9));
-    }
     int m,n,k;
     boolean[][] visited;
-    public static int movingCount(int m, int n, int k) {
+    public int movingCount(int m, int n, int k) {
         this.m = m;
         this.n = n;
         this.k = k;
         this.visited = new boolean[m][n];
-
+        return dfs(0,0,0,0);
     }
-    public static int dfs(int i, int j, int si, int sj){
+    public int dfs(int i, int j, int si, int sj){
         if (i >= m || j >= n|| si + sj > k ||visited[i][j] == true){
             return 0;
         }
