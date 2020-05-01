@@ -7,7 +7,7 @@ public class JZoffer14 {
      * 从底向上,每一个数的最大乘积都来源于之前的某一个数或当前的两数相乘
      *
      */
-    public static int cuttingRope(int n) {
+    public static int cuttingRope1(int n) {
         int[] dp = new int[n+1];
         dp[1] = 1;
         for (int i = 2; i <= n; i++) {
