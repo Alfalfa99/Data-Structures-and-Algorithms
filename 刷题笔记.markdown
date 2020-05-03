@@ -2415,3 +2415,115 @@ public boolean isNumber(String s) {
     }
 ```
 
+
+
+
+
+## 21.	奇数前,偶数后
+
+```java
+public static int[] exchange(int[] nums) {
+        int length = nums.length;
+        int left = 0;
+        int right = length-1;
+        while (left < right){
+            int temp;
+            if (nums[left] % 2 == 0){
+                if (nums[right] % 2 != 0){
+                    temp = nums[left];
+                    nums[left] = nums[right];
+                    nums[right] = temp;
+                } else {
+                    right--;
+                }
+            } else {
+                left++;
+            }
+        }
+        return nums;
+    }
+```
+
+
+
+## 22.	链表中倒数第K个节点
+
+```java
+public ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode p = head;
+        int count = 0;
+        while (p != null){
+            count++;
+            p = p.next;
+        }
+        p = head;
+        while (p != null){
+            if (count == k){
+                return p;
+            }
+            count--;
+            p = p.next;
+        }
+        return null;
+    }
+```
+
+
+
+
+
+## 24.	反转链表
+
+```java
+public ListNode reverseList(ListNode head) {
+        if(head == null){
+            return null;
+        } else if(head.next == null){
+            return head;
+        }
+        return helper(head,head.next,null);
+    }
+    public static ListNode helper(ListNode p1,ListNode p2,ListNode tail){
+        if(p2.next != null){
+            tail = helper(p2,p2.next,tail);
+        } else {
+            tail = p2;
+            p2.next = p1;
+            p1.next = null;
+            return tail;
+        }
+        p2.next = p1;
+        p1.next = null;
+        return tail;
+    }
+```
+
+
+
+
+
+## 25.	合并两个有序列表
+
+```java
+public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode p1 = l1, p2 = l2,p3 = null;
+        return helper(p1,p2,p3);
+    }
+
+    public static ListNode helper(ListNode p1, ListNode p2, ListNode p3){
+        if(p1 == null){
+            return p2;
+        } else if(p2 == null){
+            return p1;
+        }
+        if (p1.val <= p2.val){
+            p3 = p1;
+            p3.next = helper(p1.next,p2,p3.next);
+        } else {
+            p3 = p2;
+            p3.next = helper(p1,p2.next,p3.next);
+        }
+        return p3;
+    }
+```
+

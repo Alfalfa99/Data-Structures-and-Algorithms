@@ -109,3 +109,11 @@ B
 src/JZoffer17.java,a\c\ac4a5731033f35db9cbb3a0a2b35db7cee0acbe0
 B
 src/JZoffer20.java,1\1\11a78d36e718cbd3fd70cd067952520302abf093
+B
+src/JZoffer21.java,a\7\a748a473c15a3e0948fbefac900581c912ac1632
+B
+src/JZoffer25.java,0\a\0a1dc6291e77e590a7468265fe515eab9ba143a5
+B
+src/JZoffer22.java,4\2\420766773c1c2674c8e6a6908035d6c0d3cc9b88
+B
+src/JZoffer24.java,1\2\127e8f8aeb42fafb4ae092fa5b5ff5fd6fad92e3
