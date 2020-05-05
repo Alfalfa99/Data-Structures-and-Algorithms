@@ -2531,6 +2531,43 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
 
 
+## 28.	对称的树 
+
+```java
+public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
+
+    public static boolean isSymmetric(TreeNode root) {
+        if (root == null){
+            return true;
+        }
+        return degui(root.left,root.right);
+    }
+
+    public static Boolean degui(TreeNode l, TreeNode r) {
+        if (l == null && r == null) {
+            return true;
+        }
+        if (l == null || r == null) {
+            return false;
+        }
+        if (l.val == r.val){
+            return degui(l.left,r.right) && degui(l.right,r.left);
+        } else {
+            return false;
+        }
+    }
+```
+
+
+
 ## 30.	包含min函数的栈
 
 ```java
