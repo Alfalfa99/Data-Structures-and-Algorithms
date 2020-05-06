@@ -121,3 +121,9 @@ B
 src/JZoffer30.java,8\e\8e2bdf3ca62b26bcafb55fc5dff039ad0dee2362
 B
 src/JZoffer28.java,c\e\ce1bc5d5209005d2ab95071c34145bccad4d4e01
+B
+src/JZoffer27.java,c\a\cad807b492727c9ff91bdda9c9b6be547e34e28c
+D
+src/LeetCode226.java,9\6\96b6e3859cbe345c4e874bfc6ca5c5b83da92b81
+B
+src/JZoffer26.java,1\7\171e661705d6a33a4eafec1a748358f8606464c6

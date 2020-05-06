@@ -1843,6 +1843,26 @@ public static boolean hasPathSum(TreeNode root, int sum) {
 
 
 
+### 226.	二叉树的镜像
+
+```java
+public TreeNode mirrorTree(TreeNode root) {
+        TreeNode nroot = null;
+        return helper(root,nroot);
+    }
+    public static TreeNode helper(TreeNode root, TreeNode nroot){
+        if (root == null){
+            return null;
+        }
+        nroot = new TreeNode(root.val);
+        nroot.right = helper(root.left,nroot.right);
+        nroot.left = helper(root.right,nroot.left);
+        return nroot;
+    }
+```
+
+
+
 
 
 ## 搜索
@@ -2524,6 +2544,45 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
             p3.next = helper(p1,p2.next,p3.next);
         }
         return p3;
+    }
+```
+
+
+
+## 26.	树的子结构
+
+```java
+//把原树的每一个子节点都扔进递归中,因为每一个节点都有可能是目标子结构
+public boolean isSubStructure(TreeNode A, TreeNode B) {
+        return (A!= null && B!= null) && (helpler(A,B) || isSubStructure(A.left,B)||isSubStructure(A.right,B));
+    }
+    public static boolean helpler(TreeNode A, TreeNode B){
+        if (B == null){
+            return true;
+        } else if (A == null || A.val != B.val) {
+            return false;
+        }
+        return helpler(A.left,B.left) && helpler(A.right,B.right);
+    }
+```
+
+
+
+## 27.	二叉树的镜像
+
+```java
+public TreeNode mirrorTree(TreeNode root) {
+        TreeNode nroot = null;
+        return helper(root,nroot);
+    }
+    public static TreeNode helper(TreeNode root, TreeNode nroot){
+        if (root == null){
+            return null;
+        }
+        nroot = new TreeNode(root.val);
+        nroot.right = helper(root.left,nroot.right);
+        nroot.left = helper(root.right,nroot.left);
+        return nroot;
     }
 ```
 
