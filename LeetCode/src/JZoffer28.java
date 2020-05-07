@@ -21,23 +21,18 @@ public class JZoffer28 {
     }
 
     public static boolean isSymmetric(TreeNode root) {
-        if (root == null){
+        if(root == null){
             return true;
         }
-        return degui(root.left,root.right);
+        return helper(root.left,root.right);
     }
-
-    public static Boolean degui(TreeNode l, TreeNode r) {
-        if (l == null && r == null) {
+    public static boolean helper(TreeNode left, TreeNode right){
+        if(left == null && right == null){
             return true;
         }
-        if (l == null || r == null) {
+        if(left == null || right == null || left.val != right.val){
             return false;
         }
-        if (l.val == r.val){
-            return degui(l.left,r.right) && degui(l.right,r.left);
-        } else {
-            return false;
-        }
+        return helper(left.left, right.right) && helper(left.right,right.left);
     }
 }

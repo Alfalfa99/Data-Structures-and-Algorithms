@@ -274,6 +274,31 @@ public static int majorityElement(int[] nums) {
 
 ### 中等
 
+
+
+#### 54.	旋转数组
+
+```java
+public static List<Integer> spiralOrder(int[][] matrix) {
+        if(matrix.length == 0) return new ArrayList<>();
+        int l = 0, r = matrix[0].length - 1, t = 0, b = matrix.length - 1, x = 0;
+        List<Integer> res = new ArrayList<>();
+        while(true) {
+            for(int i = l; i <= r; i++) res.add(matrix[t][i]); // left to right.
+            if(++t > b) break;
+            for(int i = t; i <= b; i++) res.add(matrix[i][r]); // top to bottom.
+            if(l > --r) break;
+            for(int i = r; i >= l; i--) res.add(matrix[b][i]); // right to left.
+            if(t > --b) break;
+            for(int i = b; i >= t; i--) res.add(matrix[i][l]); // bottom to top.
+            if(++l > r) break;
+        }
+        return res;
+    }
+```
+
+
+
 #### 240.	搜索二维矩阵
 
 ```java
@@ -2593,35 +2618,43 @@ public TreeNode mirrorTree(TreeNode root) {
 ## 28.	对称的树 
 
 ```java
-public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-    public static boolean isSymmetric(TreeNode root) {
-        if (root == null){
+public static boolean isSymmetric(TreeNode root) {
+        if(root == null){
             return true;
         }
-        return degui(root.left,root.right);
+        return helper(root.left,root.right);
     }
-
-    public static Boolean degui(TreeNode l, TreeNode r) {
-        if (l == null && r == null) {
+    public static boolean helper(TreeNode left, TreeNode right){
+        if(left == null && right == null){
             return true;
         }
-        if (l == null || r == null) {
+        if(left == null || right == null || left.val != right.val){
             return false;
         }
-        if (l.val == r.val){
-            return degui(l.left,r.right) && degui(l.right,r.left);
-        } else {
-            return false;
+        return helper(left.left, right.right) && helper(left.right,right.left);
+    }
+```
+
+
+
+## 29.	螺旋打印数组
+
+```java
+public static int[] spiralOrder(int[][] matrix) {
+        if(matrix.length == 0) return new int[0];
+        int l = 0, r = matrix[0].length - 1, t = 0, b = matrix.length - 1, x = 0;
+        int[] res = new int[(r + 1) * (b + 1)];
+        while(true) {
+            for(int i = l; i <= r; i++) res[x++] = matrix[t][i]; // left to right.
+            if(++t > b) break;
+            for(int i = t; i <= b; i++) res[x++] = matrix[i][r]; // top to bottom.
+            if(l > --r) break;
+            for(int i = r; i >= l; i--) res[x++] = matrix[b][i]; // right to left.
+            if(t > --b) break;
+            for(int i = b; i >= t; i--) res[x++] = matrix[i][l]; // bottom to top.
+            if(++l > r) break;
         }
+        return res;
     }
 ```
 
