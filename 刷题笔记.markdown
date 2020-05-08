@@ -1722,6 +1722,37 @@ public static class TreeNode {
 
 
 
+### 102.	二叉树的层序遍历
+
+```java
+public List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null){
+            return new LinkedList<>();
+        }
+        List<List<Integer>> lists = new LinkedList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            LinkedList<Integer> linkedList = new LinkedList<>();
+            int length = queue.size();
+            for (int i = 0; i < length; i++) {
+                TreeNode treeNode = queue.poll();
+                linkedList.add(treeNode.val);
+                if (treeNode.left != null){
+                    queue.add(treeNode.left);
+                }
+                if (treeNode.right != null){
+                    queue.add(treeNode.right);
+                }
+            }
+            lists.add(linkedList);
+        }
+        return lists;
+    }
+```
+
+
+
 ### 108.	将有序数组转化为二叉搜索树
 
 ```java
@@ -2706,4 +2737,161 @@ class MinStack {
 ```
 
 
+
+## 31.	栈的压入弹出序列
+
+```java
+public boolean validateStackSequences(int[] pushed, int[] popped) {
+        int length = pushed.length;
+        Stack<Integer> stack = new Stack();
+        int j = 0;
+        for(int x : pushed){
+            stack.push(x);
+            while (!stack.isEmpty() && j < length && stack.peek() == popped[j]){
+                stack.pop();
+                j++;
+            }
+        }
+        return j == length;
+    }
+```
+
+
+
+## 32-1.	层序遍历二叉树
+
+```java
+public int[] levelOrder(TreeNode root) {
+        if (root == null){
+            return new int[]{};
+        }
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            TreeNode treeNode = queue.poll();
+            arrayList.add(treeNode.val);
+            if (treeNode.left != null){
+                queue.add(treeNode.left);
+            }
+            if (treeNode.right != null){
+                queue.add(treeNode.right);
+            }
+        }
+        int[] nums = new int[arrayList.size()];
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = arrayList.get(i);
+        }
+        return nums;
+    }
+```
+
+
+
+## 32-2.	层序遍历二叉树
+
+```java
+public List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null){
+            return new LinkedList<>();
+        }
+        List<List<Integer>> lists = new LinkedList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            LinkedList<Integer> linkedList = new LinkedList<>();
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode treeNode = queue.poll();
+                linkedList.add(treeNode.val);
+                if (treeNode.left!= null){
+                    queue.add(treeNode.left);
+                }
+                if (treeNode.right!= null){
+                    queue.add(treeNode.right);
+                }
+            }
+            lists.add(linkedList);
+        }
+        return lists;
+    }
+```
+
+
+
+## 32-3.	层序遍历二叉树(奇偶层)
+
+```java
+//	bfs做法
+public List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null) {
+            return new LinkedList<>();
+        }
+        List<List<Integer>> lists = new LinkedList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        boolean flag = false;
+        while (!queue.isEmpty()) {
+            LinkedList<Integer> linkedList = new LinkedList<>();
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode treeNode = queue.poll();
+                linkedList.add(treeNode.val);
+                if (treeNode.left != null) {
+                    queue.add(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    queue.add(treeNode.right);
+                }
+            }
+            if (flag == true){
+                Collections.reverse(linkedList);
+            }
+            flag = !flag;
+            lists.add(linkedList);
+        }
+        return lists;
+    }
+
+// 双栈法(stack1存奇数层,stack2存偶数层,利用栈的性质可知,stack1先存左子节点,stack2先存右子节点)
+	public static List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null) {
+            return new LinkedList<>();
+        }
+        List<List<Integer>> lists = new LinkedList<>();
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
+        boolean flag = true;
+        stack1.push(root);
+        while (!stack1.isEmpty() || !stack2.isEmpty()){
+            List<Integer> list = new LinkedList<>();
+            if (flag){
+                while (!stack1.isEmpty()){
+                    TreeNode treeNode = stack1.pop();
+                    list.add(treeNode.val);
+                    if (treeNode.left != null){
+                        stack2.push(treeNode.left);
+                    }
+                    if (treeNode.right != null){
+                        stack2.push(treeNode.right);
+                    }
+                }
+            } else {
+                while (!stack2.isEmpty()){
+                    TreeNode treeNode = stack2.pop();
+                    list.add(treeNode.val);
+                    if (treeNode.right != null){
+                        stack1.push(treeNode.right);
+                    }
+                    if (treeNode.left != null){
+                        stack1.push(treeNode.left);
+                    }
+                }
+            }
+            lists.add(list);
+            flag = !flag;
+        }
+        return lists;
+    }
+```
 
