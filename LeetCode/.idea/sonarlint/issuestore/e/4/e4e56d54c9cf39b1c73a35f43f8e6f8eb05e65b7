@@ -1,9 +1,9 @@
 
-o
-java:S3776i"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(øóß8ñ«£Ÿ.
 m
 java:S1149n"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Êå¿Ú8£¡ã¢Ÿ.
-r
-java:S1149o"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÆÈ–ÿÿÿÿÿ8£¡ã¢Ÿ.
+o
+java:S3776i"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(øóß8ñ«£Ÿ.
 E
 java:S1125`"(Remove the literal "true" boolean value.(«¸ş•8˜¹ôŸŸ.
+r
+java:S1149o"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÆÈ–ÿÿÿÿÿ8£¡ã¢Ÿ.

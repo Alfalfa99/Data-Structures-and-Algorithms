@@ -2915,3 +2915,27 @@ public boolean verifyPostorder(int[] postorder) {
     }
 ```
 
+
+
+## 39.	寻找数组中出现次数大于一半的数
+
+```java
+//解法1:候选人算法,如果当前候选人并非上次记录的候选人,则上次记录的候选人票数减一
+public static int majorityElement(int[] nums) {
+        int count = 0;
+        int candidate = nums[0];
+        for (int num : nums) {
+            if (count == 0){
+                candidate = num;
+            }
+            count += (candidate == num)? 1:-1;
+        }
+        return candidate;
+}
+//解法2:先进行排序,出现次数大于一半的数的位置一定会出现在nums.lenth/2
+public static int majorityElement(int[] nums) {
+	Arrays.sort(nums);
+	return nums[nums.length/2];
+}
+```
+

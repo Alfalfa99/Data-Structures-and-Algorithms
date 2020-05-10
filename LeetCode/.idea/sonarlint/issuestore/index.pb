@@ -139,3 +139,5 @@ D
 src/LeetCode946.java,0\f\0f72a5f0397d5345ee8ee84fe9ca745e38888fc6
 B
 src/JZoffer32.java,e\4\e4e56d54c9cf39b1c73a35f43f8e6f8eb05e65b7
+B
+src/JZoffer39.java,2\8\288dd739c103872fba3bec6299cd436fed7a2f49
