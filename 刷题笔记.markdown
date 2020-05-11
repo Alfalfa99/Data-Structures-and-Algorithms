@@ -481,6 +481,27 @@ public static int hammingWeight(int n) {
 
 
 
+### 中等
+
+#### 50.	Pow(x,n)
+
+```java
+public static double myPow(double x, int n) {
+        if (n == 0) {
+            return 1.0;
+        }
+        return n > 0 ? helper(x, n) : 1.0 / helper(x, n);
+    }
+
+    public static double helper(double x, int M) {
+        if (M == 0) {
+            return 1.0;
+        }
+        double y = helper(x, M / 2);
+        return M % 2 == 0 ? y * y : y * y * x;
+    }
+```
+
 
 
 ## 字符串
@@ -1842,6 +1863,50 @@ public static boolean hasPathSum(TreeNode root, int sum) {
 
 
 
+
+
+### 113.	二叉树中到叶子节点的路径之和
+
+```java
+public static List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> lists = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return lists;
+        }
+        helper(lists, list, root, sum);
+        return lists;
+    }
+
+    public static List<Integer> helper(List<List<Integer>> lists, List<Integer> list, TreeNode root, int sum) {
+        if (root == null) {
+            return list;
+        }
+        list.add(root.val);
+        if (sum != root.val || root.left !=null || root.right != null) {
+            list = helper(lists, list, root.left, sum-root.val);
+            list = helper(lists, list, root.right, sum-root.val);
+        }
+        if (sum == root.val && root.left == null && root.right == null) {
+            List<Integer> list1 = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                list1.add(list.get(i));
+            }
+            lists.add(list1);
+            list.remove(list.size() - 1);
+            return list;
+        }
+        list.remove(list.size()-1);
+        return list;
+    }
+```
+
+
+
+
+
+
+
 ### 105.	通过先序遍历和中序遍历创建二叉树
 
 ```java
@@ -2382,15 +2447,19 @@ public static int hammingWeight(int n) {
 ## 16.	数值的整数次方
 
 ```java
-public int integerBreak(int n) {
-        int[] dp = new int[n+1];
-        dp[1] = 1;
-        for (int i = 2; i <= n; i++) {
-            for (int j = 1; j <= i / 2; j++) {
-                dp[i] = Math.max(Math.max(j*(i-j),dp[i-j]*j),dp[i]);
-            }
+public static double myPow(double x, int n) {
+        if (n == 0) {
+            return 1.0;
         }
-        return dp[n];
+        return n > 0 ? helper(x, n) : 1.0 / helper(x, n);
+    }
+
+    public static double helper(double x, int M) {
+        if (M == 0) {
+            return 1.0;
+        }
+        double y = helper(x, M / 2);
+        return M % 2 == 0 ? y * y : y * y * x;
     }
 ```
 
@@ -2914,6 +2983,50 @@ public boolean verifyPostorder(int[] postorder) {
         return true;
     }
 ```
+
+
+
+
+
+## 34.	二叉树中到叶子节点的路径之和
+
+```java
+public static List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> lists = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return lists;
+        }
+        helper(lists, list, root, sum);
+        return lists;
+    }
+
+    public static List<Integer> helper(List<List<Integer>> lists, List<Integer> list, TreeNode root, int sum) {
+        if (root == null) {
+            return list;
+        }
+        list.add(root.val);
+        if (sum != root.val || root.left !=null || root.right != null) {
+            list = helper(lists, list, root.left, sum-root.val);
+            list = helper(lists, list, root.right, sum-root.val);
+        }
+        if (sum == root.val && root.left == null && root.right == null) {
+            List<Integer> list1 = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                list1.add(list.get(i));
+            }
+            lists.add(list1);
+            list.remove(list.size() - 1);
+            return list;
+        }
+        list.remove(list.size()-1);
+        return list;
+    }
+```
+
+
+
+
 
 
 

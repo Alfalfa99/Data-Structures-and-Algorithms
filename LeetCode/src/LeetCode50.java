@@ -1,6 +1,10 @@
-public class JZoffer16 {
+/**
+ * @author 苜蓿
+ * @date 2020/5/11
+ */
+public class LeetCode50 {
     public static void main(String[] args) {
-        System.out.println(myPow(2.00000,-2));
+        System.out.println(myPow(2.1,3));
     }
 
     public static double myPow(double x, int n) {
