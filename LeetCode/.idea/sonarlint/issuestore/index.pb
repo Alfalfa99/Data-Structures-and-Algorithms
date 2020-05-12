@@ -149,3 +149,7 @@ B
 src/JZoffer33.java,f\a\fa09e68361859116ab185051e02109819c9b609b
 B
 src/JZoffer34.java,3\c\3c2eefa93c7eb8aa846bedfa53e715477d067254
+B
+src/JZoffer36.java,e\4\e410f487a0813010eb1fa3c308617f32b5793ad2
+B
+src/JZoffer35.java,7\b\7b8a4a4a4f1f6cbbd31530bc5713dcd36927622b

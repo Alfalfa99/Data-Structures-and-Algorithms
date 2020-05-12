@@ -3026,6 +3026,75 @@ public static List<List<Integer>> pathSum(TreeNode root, int sum) {
 
 
 
+## 35.	复杂链表的复制
+
+```java
+static Map<Node,Node> map = new HashMap<>();
+    public static Node copyRandomList(Node head) {
+        if (head == null){
+            return null;
+        }
+        Node root = new Node(head.val);
+        map.put(head,root);
+        build(head,root);
+        createRandom(head,root);
+        return root;
+    }
+
+    public static void build(Node head, Node root){
+        while (head.next!=null){
+            Node nextNode = new Node(head.next.val);
+            root.next = nextNode;
+            map.put(head.next,nextNode);
+            head = head.next;
+            root = root.next;
+        }
+    }
+
+    public static void createRandom(Node head, Node root){
+        while (head!=null){
+            if (head.random!=null){
+                root.random = map.get(head.random);
+            }
+            head = head.next;
+            root = root.next;
+        }
+    }
+```
+
+
+
+
+
+## 36.	二叉搜索树转双向链表
+
+```java
+Node pre, head;
+    public Node treeToDoublyList(Node root) {
+        if(root == null){
+            return null;
+        }
+        dfs(root);
+        head.left = pre;
+        pre.right = head;
+        return head;
+    }
+    void dfs(Node cur) {
+        if(cur == null){
+            return;
+        }
+        dfs(cur.left);
+        if(pre != null){
+            pre.right = cur;
+        } else{
+            head = cur;
+        }
+        cur.left = pre;
+        pre = cur;
+        dfs(cur.right);
+    }
+```
+
 
 
 
