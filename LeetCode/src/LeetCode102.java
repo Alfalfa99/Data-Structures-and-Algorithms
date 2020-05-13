@@ -1,7 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class LeetCode102 {
     public static void main(String[] args) {
@@ -19,26 +16,26 @@ public class LeetCode102 {
     }
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        if (root == null){
-            return new LinkedList<>();
-        }
         List<List<Integer>> lists = new LinkedList<>();
+        if (root == null) {
+            return lists;
+        }
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
-        while (!queue.isEmpty()){
-            LinkedList<Integer> linkedList = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            List<Integer> list = new LinkedList<>();
             int length = queue.size();
             for (int i = 0; i < length; i++) {
                 TreeNode treeNode = queue.poll();
-                linkedList.add(treeNode.val);
-                if (treeNode.left != null){
+                list.add(treeNode.val);
+                if (treeNode.left != null) {
                     queue.add(treeNode.left);
                 }
-                if (treeNode.right != null){
+                if (treeNode.right != null) {
                     queue.add(treeNode.right);
                 }
             }
-            lists.add(linkedList);
+            lists.add(list);
         }
         return lists;
     }
