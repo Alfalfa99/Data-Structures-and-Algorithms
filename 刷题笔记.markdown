@@ -3235,6 +3235,42 @@ public static String serialize(TreeNode root) {
 
 
 
+## 38.	字符串的排列
+
+```java
+List<String> res = new LinkedList<>();
+    char[] c;
+
+    public String[] permutation(String s) {
+        c = s.toCharArray();
+        dfs(0);
+        return res.toArray(new String[res.size()]);
+    }
+
+    void dfs(int x) {
+        if (x == c.length - 1) {
+            res.add(String.valueOf(c)); // 添加排列方案
+            return;
+        }
+        HashSet<Character> set = new HashSet<>();
+        for (int i = x; i < c.length; i++) {
+            if (set.contains(c[i])) {
+                continue; // 重复，因此剪枝
+            }
+            set.add(c[i]);
+            swap(i, x); // 交换，将 c[i] 固定在第 x 位
+            dfs(x + 1); // 开启固定第 x + 1 位字符
+            swap(i, x); // 恢复交换
+        }
+    }
+
+    void swap(int a, int b) {
+        char tmp = c[a];
+        c[a] = c[b];
+        c[b] = tmp;
+    }
+```
+
 
 
 
@@ -3259,5 +3295,40 @@ public static int majorityElement(int[] nums) {
 	Arrays.sort(nums);
 	return nums[nums.length/2];
 }
+```
+
+
+
+
+
+## 40.	最小的k个数
+
+```java
+public int[] getLeastNumbers(int[] arr, int k) {
+        if (k == 0) {
+            return new int[0];
+        }
+        // 使用一个最大堆（大顶堆）
+        // Java 的 PriorityQueue 默认是小顶堆，添加 comparator 参数使其变成最大堆
+        Queue<Integer> heap = new PriorityQueue<>(k, (i1, i2) -> Integer.compare(i2, i1));
+
+        for (int e : arr) {
+            // 当前数字小于堆顶元素才会入堆
+            if (heap.isEmpty() || heap.size() < k || e < heap.peek()) {
+                heap.offer(e);
+            }
+            if (heap.size() > k) {
+                heap.poll(); // 删除堆顶最大元素
+            }
+        }
+
+        // 将堆中的元素存入数组
+        int[] res = new int[heap.size()];
+        int j = 0;
+        for (int e : heap) {
+            res[j++] = e;
+        }
+        return res;
+    }
 ```
 

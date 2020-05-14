@@ -159,3 +159,7 @@ C
 src/JZoffer297.java,8\a\8a79220f92ab9bdaf2c536f5563686dea337a779
 D
 src/LeetCode103.java,7\4\7424c6bc7c362a92fa1faaddbb21aa36c795702d
+B
+src/JZoffer40.java,2\b\2bfd94a7aab416f1e09f7a21bcdd71a2e746899a
+B
+src/JZoffer38.java,1\5\152a2a6d1ee9cfed7075e4bdf39fe1ba4ad16296
