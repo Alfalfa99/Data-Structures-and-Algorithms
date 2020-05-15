@@ -350,6 +350,30 @@ public int findMin(int[] nums) {
 
 
 
+
+
+#### 560.	和为K的字数组
+
+```java
+public int subarraySum(int[] nums, int k) {
+        int count = 0, pre = 0;
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        mp.put(0, 1);
+        for (int i = 0; i < nums.length; i++) {
+            pre += nums[i];
+            if (mp.containsKey(pre - k)) {
+                count += mp.get(pre - k);
+            }
+            mp.put(pre, mp.getOrDefault(pre, 0) + 1);
+        }
+        return count;
+    }
+```
+
+
+
+
+
 ### 困难
 
 #### 154.	旋转数组的最小值II
@@ -3329,6 +3353,34 @@ public int[] getLeastNumbers(int[] arr, int k) {
             res[j++] = e;
         }
         return res;
+    }
+```
+
+
+
+
+
+## 41.	数据流中的中位数
+
+```java
+class MedianFinder {
+        Queue<Integer> A, B;
+        public MedianFinder() {
+            A = new PriorityQueue<>(); // 小顶堆，保存较大的一半
+            B = new PriorityQueue<>((x, y) -> (y - x)); // 大顶堆，保存较小的一半
+        }
+        public void addNum(int num) {
+            if(A.size() != B.size()) {
+                A.add(num);
+                B.add(A.poll());
+            } else {
+                B.add(num);
+                A.add(B.poll());
+            }
+        }
+        public double findMedian() {
+            return A.size() != B.size() ? A.peek() : (A.peek() + B.peek()) / 2.0;
+        }
     }
 ```
 
