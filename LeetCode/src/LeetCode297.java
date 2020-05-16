@@ -6,7 +6,7 @@ import java.util.List;
  * @author 苜蓿
  * @date 2020/5/13
  */
-public class JZoffer297 {
+public class LeetCode297 {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);

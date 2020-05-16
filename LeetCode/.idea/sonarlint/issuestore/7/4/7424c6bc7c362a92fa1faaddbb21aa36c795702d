@@ -1,7 +1,7 @@
 
-t
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ÿğ–Áûÿÿÿÿ8°ˆã .
-m
-java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Êå¿Ú8Å¼ãâ .
 r
 java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÆÈ–ÿÿÿÿÿ8Å¼ãâ .
+m
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Êå¿Ú8Å¼ãâ .
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ÿğ–Áûÿÿÿÿ8°ˆã .
