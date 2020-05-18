@@ -2086,6 +2086,31 @@ public static List<List<Integer>> pathSum(TreeNode root, int sum) {
 
 
 
+### 124.	二叉树的最大路径和
+
+```java
+static int max_num = Integer.MIN_VALUE;
+    public static int maxPathSum(TreeNode root) {
+        DFS(root);
+        return max_num;
+    }
+
+    public static int DFS(TreeNode root){
+        if (root == null){
+            return 0;
+        }
+        //如果左子树是负的或右子树是负的就不选
+        int leftVal = Math.max(DFS(root.left),0);
+        int rightVal = Math.max(DFS(root.right),0);
+        max_num = Math.max(max_num,leftVal+root.val+rightVal);
+        return root.val+Math.max(leftVal,rightVal);
+    }
+```
+
+
+
+
+
 ### 226.	二叉树的镜像
 
 ```java
