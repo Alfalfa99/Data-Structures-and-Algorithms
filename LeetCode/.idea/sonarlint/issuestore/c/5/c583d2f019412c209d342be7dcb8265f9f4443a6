@@ -1,4 +1,4 @@
 
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÓ×ìùÿÿÿÿ8¿¢Ìª¢.
 t
 java:S3008"RRename this field "max_num" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çÀíûıÿÿÿÿ8àÍ¬¢.
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÓ×ìùÿÿÿÿ8¿¢Ìª¢.
