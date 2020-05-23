@@ -1,14 +1,14 @@
 
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Ò¥ÿÿÿÿÿ8ÉÀˆÑ£.
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ıõ—ç8•³òĞ£.
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øİ’¶8ÉÀˆÑ£.
 h
 java:S2259	"FA "NullPointerException" could be thrown; "treeNode" is nullable here.(ˆ§—«ùÿÿÿÿ8×Ê‰Ñ£.
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Ò¥ÿÿÿÿÿ8ÉÀˆÑ£.
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Ò¥ÿÿÿÿÿ8ÉÀˆÑ£.
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øİ’¶8ÉÀˆÑ£.
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã´®Áøÿÿÿÿ8ÉÀˆÑ£.
 r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÇÄ—şÿÿÿÿ8ÉÀˆÑ£.
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Ò¥ÿÿÿÿÿ8ÉÀˆÑ£.
 r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Ò¥ÿÿÿÿÿ8ÉÀˆÑ£.
 {
 java:S2293+"YReplace the type specification in this constructor call with the diamond operator ("<>").(Éâôúÿÿÿÿ8ÉÀˆÑ£.
-b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ıõ—ç8•³òĞ£.
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã´®Áøÿÿÿÿ8ÉÀˆÑ£.
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Ò¥ÿÿÿÿÿ8ÉÀˆÑ£.
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Ò¥ÿÿÿÿÿ8ÉÀˆÑ£.
