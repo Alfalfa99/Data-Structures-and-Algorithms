@@ -1077,6 +1077,103 @@ public static ListNode reverseList(ListNode head) {
 
 
 
+### 中等
+
+#### 146.	双向链表实现淘汰策略(最久未使用数据淘汰)
+
+```java
+static class LRUCache {
+        //双向链表的伪头部后跟的是新节点,伪尾部前的是旧节点
+        class DLinkedNode {
+            int key;
+            int value;
+            DLinkedNode prev;
+            DLinkedNode next;
+            public DLinkedNode() {}
+            public DLinkedNode(int _key, int _value) {
+                key = _key; value = _value;
+            }
+        }
+
+        private Map<Integer, DLinkedNode> cache = new HashMap<Integer, DLinkedNode>();
+        private int size;
+        private int capacity;
+        private DLinkedNode head, tail;
+
+        public LRUCache(int capacity) {
+            this.size = 0;
+            this.capacity = capacity;
+            // 使用伪头部和伪尾部节点
+            head = new DLinkedNode();
+            tail = new DLinkedNode();
+            head.next = tail;
+            tail.prev = head;
+        }
+
+        public int get(int key) {
+            DLinkedNode node = cache.get(key);
+            if (node == null) {
+                return -1;
+            }
+            // 如果 key 存在，先通过哈希表定位，再移到头部
+            moveToHead(node);
+            return node.value;
+        }
+
+        public void put(int key, int value) {
+            DLinkedNode node = cache.get(key);
+            if (node == null) {
+                // 如果 key 不存在，创建一个新的节点
+                DLinkedNode newNode = new DLinkedNode(key, value);
+                // 添加进哈希表
+                cache.put(key, newNode);
+                // 添加至双向链表的头部
+                addToHead(newNode);
+                ++size;
+                if (size > capacity) {
+                    // 如果超出容量，删除双向链表的尾部节点
+                    DLinkedNode tail = removeTail();
+                    // 删除哈希表中对应的项
+                    cache.remove(tail.key);
+                    --size;
+                }
+            }
+            else {
+                // 如果 key 存在，先通过哈希表定位，再修改 value，并移到头部
+                node.value = value;
+                moveToHead(node);
+            }
+        }
+        //把节点放入伪头部后边
+        private void addToHead(DLinkedNode node) {
+            node.prev = head;
+            node.next = head.next;
+            head.next.prev = node;
+            head.next = node;
+        }
+        //真正的删除当前节点方法
+        private void removeNode(DLinkedNode node) {
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+        }
+        //将被get过的节点放至双向链表头部
+        private void moveToHead(DLinkedNode node) {
+            removeNode(node);
+            addToHead(node);
+        }
+
+        private DLinkedNode removeTail() {
+            DLinkedNode res = tail.prev;
+            removeNode(res);
+            return res;
+        }
+    }
+```
+
+
+
+
+
 ### 困难
 
 #### 25.	k个一组反转链表
@@ -1698,6 +1795,49 @@ public int integerBreak(int n) {
             }
         }
         return dp[n];
+    }
+```
+
+
+
+
+
+### 221.	最大正方形
+
+```java
+public int maximalSquare(char[][] matrix) {
+        /**
+         * 例子如下, dp数组比matrix多一行和一列,dp中记录的是最大边长
+         * matrix:                   dp:
+         *  1   1   1   0   1           0   0   0   0   0   0
+         *  1   1   1   1   0           0   1   1   1   0   1
+         *  1   1   1   0   1           0   1   2   2   1   0
+         *  1   1   1   1   1           0   1   2   3   0   1
+         *  1   1   0   1   1           0   1   2   3   1   1
+         *                              0   1   2   0   1   2
+         */
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return 0;
+        }
+        int width = matrix[0].length;
+        int height = matrix.length;
+        //正方形最大边长
+        int maxSide = 0;
+        //多申请一行和一列,就能处理下标为0的情况了
+        //dp数组中存的是能形成正方形的最大边长
+        int[][] dp = new int[height + 1][width + 1];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                //如果在字符数组中为1,那么在当前位置的右下角计算当前的最长正方形边长
+                if (matrix[i][j] == '1') {
+                    //木桶原理,从左下,当前,右 三个位置找到最短的正方形边+1,即为当前位置在右下位置能形成的最大正方形;
+                    dp[i + 1][j + 1] = Math.min(Math.min(dp[i][j + 1], dp[i + 1][j]), dp[i][j]) + 1;
+                    //根据条件更新最大值;
+                    maxSide = Math.max(dp[i + 1][j + 1], maxSide);
+                }
+            }
+        }
+        return maxSide * maxSide;
     }
 ```
 
