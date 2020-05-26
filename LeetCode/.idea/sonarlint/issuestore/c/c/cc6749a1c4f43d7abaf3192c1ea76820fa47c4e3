@@ -1,9 +1,9 @@
 
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·›λÿÿÿÿÿ8στΰ¤.
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·›λÿÿÿÿÿ8στΰ¤.
-{
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÿι­’ψÿÿÿÿ8στΰ¤.
 D
 java:S1659"""Declare "tail" on a separate line.(†°ΈΖόÿÿÿÿ8στΰ¤.
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·›λÿÿÿÿÿ8στΰ¤.
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·›λÿÿÿÿÿ8στΰ¤.
 U
 java:S1117D"8Rename "tail" which hides the field declared at line 34.(Ϊ®μΔ8στΰ¤.
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÿι­’ψÿÿÿÿ8στΰ¤.

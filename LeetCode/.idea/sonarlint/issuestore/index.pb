@@ -199,3 +199,9 @@ D
 src/LeetCode221.java,5\f\5fda47a3ef81f27bdd21a13e00aa7e4700e86553
 D
 src/LeetCode146.java,c\c\cc6749a1c4f43d7abaf3192c1ea76820fa47c4e3
+B
+src/JZoffer49.java,8\0\80ef1d12faf88e67f618b385b8238776e8d6997d
+B
+src/JZoffer50.java,7\f\7fd101f8967ee8d5a734ebc6ad9b4456e048dbb4
+B
+src/JZoffer51.java,4\1\41dc3127e7d36b67f6b758dc79e469e0d92643ce

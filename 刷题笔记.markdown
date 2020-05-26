@@ -3954,3 +3954,139 @@ public static int lengthOfLongestSubstring(String s) {
     }
 ```
 
+
+
+## 49.	丑数(dp)
+
+```java
+public int nthUglyNumber(int n) {
+        int a = 0, b = 0, c = 0;
+        int[] dp = new int[n];
+        dp[0] = 1;
+        for(int i = 1 ; i < n; i++){
+            int n2 = dp[a]*2, n3 = dp[b]*3, n5 = dp[c]*5;
+            dp[i] = Math.min(Math.min(n2,n3),n5);
+            if(dp[i] == n2){
+                a++;
+            }
+            if(dp[i] == n3){
+                b++;
+            }
+            if(dp[i] == n5){
+                c++;
+            }
+        }
+        return dp[n-1];
+    }
+```
+
+
+
+
+
+## 50.	第一个只出现一次的字符
+
+```java
+public char firstUniqChar(String s) {
+        int nLen = nums.length;
+        int count = 0;
+        for (int i = 0; i < nLen; i++) {
+            for (int j = i+1; j < nLen; j++) {
+                if (nums[i] > nums[j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+```
+
+
+
+
+
+## 51.	数组中的逆序对
+
+```java
+public int reversePairs(int[] nums) {
+        int len = nums.length;
+
+        if (len < 2) {
+            return 0;
+        }
+
+        int[] copy = new int[len];
+        for (int i = 0; i < len; i++) {
+            copy[i] = nums[i];
+        }
+
+        int[] temp = new int[len];
+        return reversePairs(copy, 0, len - 1, temp);
+    }
+
+    /**
+     * nums[left..right] 计算逆序对个数并且排序
+     *	递归将数组从中间分成两半,递归后把每个数都打碎开,丢到排序里边去
+     * @param nums
+     * @param left
+     * @param right
+     * @param temp
+     * @return
+     */
+    private int reversePairs(int[] nums, int left, int right, int[] temp) {
+        if (left == right) {
+            return 0;
+        }
+
+        int mid = left + (right - left) / 2;
+        int leftPairs = reversePairs(nums, left, mid, temp);
+        int rightPairs = reversePairs(nums, mid + 1, right, temp);
+
+        if (nums[mid] <= nums[mid + 1]) {
+            return leftPairs + rightPairs;
+        }
+
+        int crossPairs = mergeAndCount(nums, left, mid, right, temp);
+        return leftPairs + rightPairs + crossPairs;
+    }
+
+    /**
+     * nums[left..mid] 有序，nums[mid + 1..right] 有序
+     *	计算每次打碎成两半后逆序对有多少个
+     * @param nums
+     * @param left
+     * @param mid
+     * @param right
+     * @param temp
+     * @return
+     */
+    private int mergeAndCount(int[] nums, int left, int mid, int right, int[] temp) {
+        for (int i = left; i <= right; i++) {
+            temp[i] = nums[i];
+        }
+
+        int i = left;
+        int j = mid + 1;
+
+        int count = 0;
+        for (int k = left; k <= right; k++) {
+
+            if (i == mid + 1) {
+                nums[k] = temp[j];
+                j++;
+            } else if (j == right + 1) {
+                nums[k] = temp[i];
+                i++;
+            } else if (temp[i] <= temp[j]) {
+                nums[k] = temp[i];
+                i++;
+            } else {
+                nums[k] = temp[j];
+                j++;
+                count += (mid - i + 1);
+            }
+        }
+        return count;
+    }
+```
+
