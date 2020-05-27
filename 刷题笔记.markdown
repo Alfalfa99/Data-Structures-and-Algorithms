@@ -276,6 +276,43 @@ public static int majorityElement(int[] nums) {
 
 
 
+#### 34.	在排序数组中查找目标数出现的第一个位置和最后一个位置
+
+```java
+public static int[] searchRange(int[] nums, int target) {
+        int[] res = new int[]{-1,-1};
+        int left = helper(nums,target-1);
+        int right = helper(nums,target);
+        //判断target长度,如果长度为0 则返回[-1,-1]
+        if(right - left == 0){
+            return res;
+        } else{
+            res[0] = left;
+            //因为right记录的是第一个比target大的数的下标,所以要right-1
+            res[1] = right - 1;
+        }
+        return res;
+    }
+
+    public static int helper(int[] nums, int target){
+        int l = 0, r = nums.length-1;
+        //[l,r]区间
+        while (l <= r){
+            int mid = (l+r)/2;
+            if (nums[mid] <= target){
+                l = mid+1;
+            } else {
+                r = mid-1;
+            }
+        }
+        return l;
+    }
+```
+
+
+
+
+
 #### 54.	旋转数组
 
 ```java
@@ -2586,6 +2623,30 @@ public static int lengthOfLongestSubstring(String s) {
 
 
 
+## 前缀和
+
+
+
+### 974.	和可被K整除的子数组
+
+```java
+public static int subarraysDivByK(int[] A, int K) {
+        //Map中的每个value想加即为逆序对个数
+        Map<Integer, Integer> record = new HashMap<>();
+        record.put(0, 1);
+        int sum = 0, ans = 0;
+        for (int elem: A) {
+            sum += elem;
+            // 注意 Java 取模的特殊性，当被除数为负数时取模结果为负数，需要纠正
+            int modulus = (sum % K + K) % K;
+            int same = record.getOrDefault(modulus, 0);
+            ans += same;
+            record.put(modulus, same + 1);
+        }
+        return ans;
+    }
+```
+
 
 
 
@@ -4087,6 +4148,52 @@ public int reversePairs(int[] nums) {
             }
         }
         return count;
+    }
+```
+
+
+
+
+
+## 52.	链表中的第一个公共节点
+
+```java
+public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        ListNode p1 = headA,p2 = headB;
+        while (p1 != p2) {
+            p1 = p1 == null?headB:p1.next;
+            p2 = p2 == null?headA:p2.next;
+        }
+        return p1;
+    }
+```
+
+
+
+
+
+## 53.	在排序数组中找到目标值出现的次数
+
+```java
+public static int search(int[] nums, int target) {
+        //找到最后一个target出现的位置下标 - 第一个target出现的下标 = target出现的次数
+        return helper(nums, target) - helper(nums, target-1);
+    }
+
+    public static int helper(int[] nums, int target) {
+        int i = 0, j = nums.length - 1;
+        while (i < j) {
+            int mid = (i + j) / 2;
+            if (nums[mid] <= target) {
+                i = mid + 1;
+            } else {
+                j = mid - 1;
+            }
+        }
+        return i;
     }
 ```
 

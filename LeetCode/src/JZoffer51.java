@@ -59,7 +59,7 @@ public class JZoffer51 {
      * @param temp
      * @return
      */
-    private int mergeAndCount(int[] nums, int left, int mid, int right, int[] temp) {
+    private static int mergeAndCount(int[] nums, int left, int mid, int right, int[] temp) {
         for (int i = left; i <= right; i++) {
             temp[i] = nums[i];
         }
