@@ -1914,6 +1914,25 @@ public int maximalSquare(char[][] matrix) {
 
 
 
+### 198.	打家劫舍
+
+```java
+public int rob(int[] nums) {
+        int len = nums.length;
+        if(len == 0)
+            return 0;
+        int[] dp = new int[len + 1];
+        dp[0] = 0;
+        dp[1] = nums[0];
+        for(int i = 2; i <= len; i++) {
+            dp[i] = Math.max(dp[i-1], dp[i-2] + nums[i-1]);
+        }
+        return dp[len];
+    }
+```
+
+
+
 
 
 ## 查找
@@ -2686,6 +2705,73 @@ public static int subarraysDivByK(int[] A, int K) {
 
 
 
+
+## 排序
+
+
+
+### 堆排序
+
+
+
+#### offer40.	最小的k个数(大顶堆)
+
+```java
+public int[] getLeastNumbers(int[] arr, int k) {
+        if (k == 0) {
+            return new int[0];
+        }
+        // 使用一个最大堆（大顶堆）
+        // Java 的 PriorityQueue 默认是小顶堆，添加 comparator 参数使其变成最大堆
+        Queue<Integer> heap = new PriorityQueue<>(k, (i1, i2) -> Integer.compare(i2, i1));
+
+        for (int e : arr) {
+            // 当前数字小于堆顶元素才会入堆
+            if (heap.isEmpty() || heap.size() < k || e < heap.peek()) {
+                heap.offer(e);
+            }
+            if (heap.size() > k) {
+                heap.poll(); // 删除堆顶最大元素
+            }
+        }
+
+        // 将堆中的元素存入数组
+        int[] res = new int[heap.size()];
+        int j = 0;
+        for (int e : heap) {
+            res[j++] = e;
+        }
+        return res;
+    }
+```
+
+
+
+
+
+#### offer41.	数据流中的中位数
+
+```java
+class MedianFinder {
+        Queue<Integer> A, B;
+        public MedianFinder() {
+            A = new PriorityQueue<>(); // 小顶堆，保存较大的一半
+            B = new PriorityQueue<>((x, y) -> (y - x)); // 大顶堆，保存较小的一半
+        }
+        public void addNum(int num) {
+            if(A.size() != B.size()) {
+                A.add(num);
+                B.add(A.poll());
+            } else {
+                B.add(num);
+                A.add(B.poll());
+            }
+        }
+        public double findMedian() {
+            return A.size() != B.size() ? A.peek() : (A.peek() + B.peek()) / 2.0;
+        }
+    }
+```
 
 
 
@@ -4228,6 +4314,60 @@ public static int search(int[] nums, int target) {
             }
         }
         return i;
+    }
+```
+
+
+
+
+
+## 53-2.	 0~n-1中缺少的数字
+
+```java
+public static int missingNumber(int[] nums) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == mid) {
+                left = mid + 1;
+            } else if (nums[mid] > mid) {
+                right = mid - 1;
+            }
+        }
+        return left;
+    }
+```
+
+
+
+
+
+
+
+## 54.	二叉搜索树的第K大的节点
+
+```java
+static PriorityQueue<Integer> heap;
+    private static int kn;
+    public static int kthLargest(TreeNode root, int k) {
+        heap = new PriorityQueue<>(k);
+        kn = k;
+        helper(root);
+        return heap.poll();
+    }
+
+    public static void helper(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        if (heap.isEmpty() || heap.size() < kn || root.val > heap.peek()){
+            heap.offer(root.val);
+        }
+        if (heap.size() > kn){
+            heap.poll();
+        }
+        helper(root.left);
+        helper(root.right);
     }
 ```
 
