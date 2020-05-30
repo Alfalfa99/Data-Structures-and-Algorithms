@@ -4371,3 +4371,51 @@ static PriorityQueue<Integer> heap;
     }
 ```
 
+
+
+## 55-1.	二叉树深度
+
+```java
+public int maxDepth(TreeNode root) {
+        return helper(root, 0);
+    }
+
+    public int helper(TreeNode root, int depth) {
+        if (root == null) {
+            return depth;
+        }
+        return Math.max(helper(root.left, depth + 1), helper(root.right, depth + 1));
+    }
+```
+
+
+
+
+
+## 55-2.	是否为平衡二叉树
+
+```java
+public boolean isBalanced(TreeNode root) {
+        return helper(root, 0) < 10001;
+    }
+
+    public int helper(TreeNode root, int depth) {
+        if (root == null) {
+            return depth;
+        }
+        int left = helper(root.left, depth + 1);
+        int right = helper(root.right, depth + 1);
+        if (Math.abs(left - right) > 1) {
+            return 10001;
+        } else {
+            return Math.max(left, right);
+        }
+    }
+```
+
+
+
+
+
+
+
