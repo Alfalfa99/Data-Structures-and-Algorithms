@@ -2037,17 +2037,7 @@ public static class TreeNode {
 ### 101.	对称的树 (树)
 
 ```java
-public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-    public static boolean isSymmetric(TreeNode root) {
+public static boolean isSymmetric(TreeNode root) {
         if (root == null){
             return true;
         }

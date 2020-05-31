@@ -3,9 +3,9 @@ public class LeetCode101 {
         TreeNode p = new TreeNode(1);
         p.left = new TreeNode(2);
         p.right = new TreeNode(2);
-//        p.left.left = new TreeNode(3);
+        p.left.left = new TreeNode(3);
         p.left.right = new TreeNode(3);
-//        p.right.left = new TreeNode(4);
+        p.right.left = new TreeNode(4);
         p.right.right = new TreeNode(3);
         System.out.println(isSymmetric(p));
     }
