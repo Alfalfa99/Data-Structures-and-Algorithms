@@ -231,3 +231,7 @@ D
 src/LeetCode101.java,7\3\73ed5864202c46aa38bb3b136a9aa257bfebbb08
 D
 src/JZoffer56_1.java,3\e\3ecc030cbae15506a18c3e0a672ae3286c01fa0f
+D
+src/JZoffer57_1.java,6\d\6d9933f91e75eedd50db2ebd30a7ef5097f51526
+D
+src/JZoffer57_2.java,d\3\d34c22a3f4a2ae44241579fd62d5d2de3b5d91e3
