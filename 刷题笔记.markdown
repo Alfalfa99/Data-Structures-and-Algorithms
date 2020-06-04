@@ -2721,6 +2721,34 @@ public static int[] twoSum(int[] nums, int target) {
 
 
 
+### offer59-1.	滑动窗口中的最大值
+
+```java
+public int[] maxSlidingWindow(int[] nums, int k) {
+        if(nums.length == 0 || k == 0) return new int[0];
+        Deque<Integer> deque = new LinkedList<>();
+        int[] res = new int[nums.length - k + 1];
+        for(int i = 0; i < k; i++) { // 未形成窗口
+            while(!deque.isEmpty() && deque.peekLast() < nums[i]) deque.removeLast();
+            deque.addLast(nums[i]);
+        }
+        res[0] = deque.peekFirst();
+        for(int i = k; i < nums.length; i++) { // 形成窗口后
+            if(deque.peekFirst() == nums[i - k]) deque.removeFirst();
+            while(!deque.isEmpty() && deque.peekLast() < nums[i]) deque.removeLast();
+            deque.addLast(nums[i]);
+            res[i - k + 1] = deque.peekFirst();
+        }
+        return res;
+    }
+```
+
+
+
+
+
+
+
 
 
 ## 前缀和
@@ -2748,6 +2776,33 @@ public static int subarraysDivByK(int[] A, int K) {
 ```
 
 
+
+### 238.	除自身外数组的乘积
+
+```java
+public int[] productExceptSelf(int[] nums) {
+        int length = nums.length;
+        int[] answer = new int[length];
+
+        // answer[i] 表示索引 i 左侧所有元素的乘积
+        // 因为索引为 '0' 的元素左侧没有元素， 所以 answer[0] = 1
+        answer[0] = 1;
+        for (int i = 1; i < length; i++) {
+            answer[i] = nums[i - 1] * answer[i - 1];
+        }
+
+        // R 为右侧所有元素的乘积
+        // 刚开始右边没有元素，所以 R = 1
+        int R = 1;
+        for (int i = length - 1; i >= 0; i--) {
+            // 对于索引 i，左边的乘积为 answer[i]，右边的乘积为 R
+            answer[i] = answer[i] * R;
+            // R 需要包含右边所有的乘积，所以计算下一个结果时需要将当前值乘到 R 上
+            R *= nums[i];
+        }
+        return answer;
+    }
+```
 
 
 
@@ -4528,6 +4583,46 @@ public String reverseWords(String s) {
         return sb.toString().trim();
     }
 ```
+
+
+
+
+
+## 58-2.	左旋转字符串
+
+```java
+public String reverseLeftWords(String s, int n) {
+        StringBuilder sb = new StringBuilder(s.substring(0,n));
+        StringBuilder st = new StringBuilder(s.substring(n));
+        return st+sb.toString();
+    }
+```
+
+
+
+## 59-1.	滑动窗口中的最大值
+
+```java
+public int[] maxSlidingWindow(int[] nums, int k) {
+        if(nums.length == 0 || k == 0) return new int[0];
+        Deque<Integer> deque = new LinkedList<>();
+        int[] res = new int[nums.length - k + 1];
+        for(int i = 0; i < k; i++) { // 未形成窗口
+            while(!deque.isEmpty() && deque.peekLast() < nums[i]) deque.removeLast();
+            deque.addLast(nums[i]);
+        }
+        res[0] = deque.peekFirst();
+        for(int i = k; i < nums.length; i++) { // 形成窗口后
+            if(deque.peekFirst() == nums[i - k]) deque.removeFirst();
+            while(!deque.isEmpty() && deque.peekLast() < nums[i]) deque.removeLast();
+            deque.addLast(nums[i]);
+            res[i - k + 1] = deque.peekFirst();
+        }
+        return res;
+    }
+```
+
+
 
 
 
