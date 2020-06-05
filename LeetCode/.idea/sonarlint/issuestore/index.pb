@@ -247,3 +247,5 @@ D
 src/JZoffer58_2.java,a\f\af96cf78585024c53ef4fac647096880b23881d4
 D
 src/JZoffer59_1.java,3\f\3f5d00bbd4ba5406295281ff42e54782bd82d031
+D
+src/JZoffer59_2.java,3\f\3ff7bcb01ffbd47747a528ce1e7c60d079dd8fe5
