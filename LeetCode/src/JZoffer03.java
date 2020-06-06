@@ -1,5 +1,8 @@
-public class JZoffer03 {
+import java.util.List;
 
+public class JZoffer03 {
+    public static void main(String[] args) {
+    }
 
 
     //直接打表,没什么好说的
