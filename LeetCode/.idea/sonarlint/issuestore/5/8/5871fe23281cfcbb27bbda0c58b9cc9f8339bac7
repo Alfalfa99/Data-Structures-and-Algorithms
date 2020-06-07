@@ -1,3 +1,5 @@
 
 u
 java:S3012"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(ÀàÀ8åş½Ğ¨.
+H
+java:S1481"&Remove this unused "s" local variable.(®şîìøÿÿÿÿ8Ù†¢ø¨.

@@ -1,15 +1,15 @@
 
+o	java:S100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì§Ö×şÿÿÿÿ8ÖÆÙ¨.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ëã°¦8ÖÆÙ¨.
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞùãÀûÿÿÿÿ8ÖÆÙ¨.
 `
 java:S1155'">Use isEmpty() to check whether the collection is empty or not.(—Ùçÿÿÿÿÿ8ÖÆÙ¨.
-Z
-java:S1155">Use isEmpty() to check whether the collection is empty or not.(…Ï‘E8ÖÆÙ¨.
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ğÆƒ¼
 [
 java:S1155(">Use isEmpty() to check whether the collection is empty or not.(ßôşè8ÖÆÙ¨.
-b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ğÆƒ¼
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞùãÀûÿÿÿÿ8ÖÆÙ¨.
-j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ëã°¦8ÖÆÙ¨.
-E
-java:S1481")Remove this unused "nums" local variable.(ôÈ˜T8»½Ê¨.
 [
 java:S1155 ">Use isEmpty() to check whether the collection is empty or not.(×Ş™ª8ÖÆÙ¨.
-o	java:S100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì§Ö×şÿÿÿÿ8ÖÆÙ¨.
+E
+java:S1481")Remove this unused "nums" local variable.(ôÈ˜T8»½Ê¨.
+Z
+java:S1155">Use isEmpty() to check whether the collection is empty or not.(…Ï‘E8ÖÆÙ¨.

@@ -1,8 +1,8 @@
 
-|
-java:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰8¡Å´È§.
 M
 java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¹º…Å§.
 M
 java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8¹º…Å§.
 b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ìþª°
+|
+java:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰8¡Å´È§.
