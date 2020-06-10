@@ -4,16 +4,26 @@ public class JZoffer04 {
     }
 
     public static boolean findNumberIn2DArray(int[][] matrix, int target) {
-        int row = matrix.length;
-        if (row == 0) return false;
-        int col = matrix[0].length;
-        if (col == 0) return false;
-        int i = 0;
-        int j = col - 1;
-        while (i < row && j >= 0) {
-            if (matrix[i][j] == target) return true;
-            if (matrix[i][j] > target) j--;
-            else i++;
+        int height = matrix.length;
+        if(height == 0){
+            return false;
+        }
+        int width = matrix[0].length;
+        if(width == 0){
+            return false;
+        }
+        for (int i = width-1, j = 0; i >= 0 && j<height;){
+            if(matrix[j][i] <target){
+                j++;
+                continue;
+            }
+            if(matrix[j][i] > target){
+                i--;
+                continue;
+            }
+            if(matrix[j][i] == target){
+                return true;
+            }
         }
         return false;
     }
