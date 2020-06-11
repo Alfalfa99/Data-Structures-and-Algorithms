@@ -1079,6 +1079,24 @@ public static String decodeString(String s) {
 
 
 
+#### 739.	每日气温
+
+```java
+    public static int[] dailyTemperatures(int[] T) {
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        int[] result = new int[T.length];
+        for (int i = 0; i < T.length; i++) {
+            int current_num = T[i];
+            while (!stack.isEmpty() && current_num > T[stack.peekLast()]) {
+                int target = stack.pollLast();
+                result[target] = i - target;
+            }
+            stack.addLast(i);
+        }
+        return result;
+    }
+```
+
 
 
 
@@ -3018,23 +3036,27 @@ public static String replaceSpace(String s) {
 ## 6.	反转打印链表
 
 ```java
-public static int[] reversePrint(ListNode head) {
-        return helper(head,0,null);
-    }
-    public static int[] helper(ListNode head, int num,int[] nums){
-        if (head != null && head.next != null){
-            num++;
-            nums = helper(head.next,num,nums);
-        } else if (head == null){
+static int[] result;
+    public static int[] reversePrint(ListNode head) {
+        if (head == null){
             return new int[0];
-        } else {
-            num++;
-            nums = new int[num];
-            nums[num-nums.length] = head.val;
-            return nums;
         }
-        nums[nums.length-num] = head.val;
-        return nums;
+        helper(head, 0);
+        return result;
+    }
+/**
+ *	利用depth记录链表长度,运用返回值i来代表该节点值在result数组中存储的位置
+ */
+    public static int helper(ListNode head, int depth){
+        int i;
+        if(head.next == null){
+            result = new int[depth+1];
+            i = 0;
+        } else{
+            i = helper(head.next, depth+1);
+        }
+        result[i] = head.val;
+        return i+1;
     }
 ```
 
@@ -3104,30 +3126,30 @@ public static int[] reversePrint(ListNode head) {
 
 ```java
 static class CQueue {
-        Stack<Integer> stack1;
-        Stack<Integer> stack2;
+        ArrayDeque<Integer> stack1;
+        ArrayDeque<Integer> stack2;
         public CQueue() {
-            stack1 = new Stack();
-            stack2 = new Stack();
+            stack1 = new ArrayDeque<>();
+            stack2 = new ArrayDeque<>();
         }
 
         public void appendTail(int value) {
-            stack2.add(value);
+            stack1.addLast(value);
         }
-
+		/* 如果stack2 是空,那么从stack1 中抽取数据存放入stack2,如果stack2不为空,直接弹栈*/
         public int deleteHead() {
-            if (stack1.isEmpty()){
-                if (stack2.isEmpty()){
+            if(stack2.isEmpty()){
+                while (!stack1.isEmpty()){
+                    stack2.addLast(stack1.pollLast());
+                }
+                if (stack2.isEmpty()) {
                     return -1;
-                } else {
-                    while (!stack2.empty()) {
-                        stack1.push(stack2.pop());
-                    }
                 }
             }
-            return stack1.pop();
+            return stack2.pollLast();
         }
     }
+}
 ```
 
 
