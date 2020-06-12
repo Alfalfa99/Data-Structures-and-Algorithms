@@ -298,6 +298,16 @@ public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
 
 ### 中等
 
+#### 14.	三数之和
+
+```java
+
+```
+
+
+
+
+
 
 
 #### 34.	在排序数组中查找目标数出现的第一个位置和最后一个位置

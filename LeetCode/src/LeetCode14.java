@@ -15,7 +15,7 @@ public class LeetCode14 {
                 //将公共前缀的最后一位删除
                 prefix = prefix.substring(0, prefix.length() - 1);
                 //如果公共前缀删除完毕仍未找到相同部分则返回
-                if (prefix.equals("")) {
+                if ("".equals(prefix)) {
                     return "";
                 }
             }
