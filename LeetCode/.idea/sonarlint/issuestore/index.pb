@@ -275,3 +275,7 @@ D
 src/LeetCode235.java,9\7\970687ae9d9852cc89d9987b60225a5e1b483d92
 D
 src/LeetCode739.java,3\1\31a03760acf2970a27b445ed0de5395dddd5576d
+C
+src/LeetCode15.java,2\9\29df46e1e12d02f2264695118ccfc83fb101f9e4
+C
+src/LeetCode14.java,f\e\feec005e431a8a9e4b1823020ccdac40b162825f
