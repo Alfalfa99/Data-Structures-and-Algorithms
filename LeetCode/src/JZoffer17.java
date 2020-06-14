@@ -9,6 +9,5 @@ public class JZoffer17 {
             arr[i] = i + 1;
         }
         return arr;
-
     }
 }

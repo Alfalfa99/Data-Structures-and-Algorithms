@@ -4978,3 +4978,114 @@ public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 
 
 
+
+
+# 归类
+
+
+
+## 基础题
+
+### offer17.	打印1到最大的n位数
+
+```java
+    public int[] printNumbers(int n) {
+        int num = (int) Math.pow(10, n);
+        int[] arr = new int[num - 1];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i + 1;
+        }
+        return arr;
+    }
+```
+
+
+
+
+
+
+
+## 位运算
+
+### offer15.	二进制中1的个数
+
+```java
+public static int hammingWeight(int n) {
+        int  cnt = 0;
+        while(n!=0){
+            //统计1的个数
+            cnt++;
+            //消去n最右边的1
+            n&=(n-1);
+        }
+        return cnt;
+    }
+```
+
+
+
+
+
+
+
+## 递归
+
+### offer16 && LeetCode50.	数值的整数次方
+
+```java
+public static double myPow(double x, int n) {
+        if (n == 0) {
+            return 1.0;
+        }
+        return n > 0 ? helper(x, n) : 1.0 / helper(x, n);
+    }
+
+    public static double helper(double x, int n) {
+        if (n == 0) {
+            return 1.0;
+        }
+        double temp = helper(x, n / 2);
+        return n % 2 == 0 ? temp * temp : temp * temp * x;
+    }
+```
+
+
+
+
+
+
+
+## 贪心
+
+### LeetCode1300.	转变数组后最接近目标值的数组和
+
+```java
+//贪心:排序+遍历+调整
+public int findBestValue(int[] arr, int target) {
+        Arrays.sort(arr);
+
+        int n = arr.length, sum = 0, res = -1, rest = n; // rest: 还有几个元素可变
+        for (int i = 0; i < n; i++, rest--) {
+            int r = (target - sum) / rest; // 剩余后面的都变成多少比较接近
+            if (r <= arr[i]) { // 比当前元素小（保证 r > arr[i - 1]，否则上一轮已 break）
+                res = r; // 当前及以后都改为 r
+                break; // 找到就跳出
+            }
+            sum += arr[i];
+        }
+
+        // 都找不到，说明希望 value 比 arr[n - 1] 还要大，则返回最大即可
+        if (res == -1) {
+            return arr[n - 1];
+        }
+
+        // 当前得出的 res 只保证了总和小于 target 的最近
+        // 试一试 res + 1 会不会更近
+        int dis = target - sum - res * rest; // dis: distance
+        if (Math.abs(target - sum - (res + 1) * rest) < dis) {
+            return res + 1;
+        }
+        return res;
+    }
+```
+
