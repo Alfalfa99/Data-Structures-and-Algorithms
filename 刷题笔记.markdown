@@ -5123,3 +5123,65 @@ public ListNode deleteNode(ListNode head, int val) {
     }
 ```
 
+
+
+### offer22.	链表中的倒数第K个节点
+
+```java
+public ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode p = head;
+        int count = 0;
+        while (p != null){
+            count++;
+            p = p.next;
+        }
+        p = head;
+        while (p != null){
+            if (count == k){
+                return p;
+            }
+            count--;
+            p = p.next;
+        }
+        return null;
+    }
+```
+
+
+
+### offer24.	反转链表
+
+```java
+public ListNode reverseList(ListNode head) {
+        if(head == null){
+            return null;
+        } else if(head.next == null){
+            return head;
+        }
+        return helper(head,head.next,null);
+    }
+    public static ListNode helper(ListNode p1,ListNode p2,ListNode tail){
+        if(p2.next != null){
+            tail = helper(p2,p2.next,tail);
+        } else {
+            tail = p2;
+            p2.next = p1;
+            p1.next = null;
+            return tail;
+        }
+        p2.next = p1;
+        p1.next = null;
+        return tail;
+    }
+```
+
+
+
+
+
+
+
+
+
+
+
