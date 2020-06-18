@@ -283,3 +283,5 @@ E
 src/LeetCode1300.java,c\e\ce9b2c72d3ca93cea9850df9736a0ee5dd7614dd
 E
 src/LeetCode1014.java,4\e\4edcfc15d3837bd34deb64920cde48b9d0a36f49
+E
+src/LeetCode1028.java,3\4\34f18f87b2cc8b85c62759c79b0ea0492ea701b7
