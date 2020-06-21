@@ -7,7 +7,8 @@ public class JZoffer26 {
         A.left.right = new TreeNode(2);
         TreeNode B = new TreeNode(3);
         B.left = new TreeNode(1);
-
+        String s = String.valueOf(123);
+        System.out.println(s.length());
     }
 
     public static class TreeNode {
