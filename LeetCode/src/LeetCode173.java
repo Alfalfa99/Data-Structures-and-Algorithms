@@ -24,26 +24,32 @@ public class LeetCode173 {
 
     static class BSTIterator {
         Deque<Integer> queue;
+
         public BSTIterator(TreeNode root) {
             queue = new ArrayDeque<>();
             helper(root);
         }
 
-        /** @return the next smallest number */
+        /**
+         * @return the next smallest number
+         */
         public int next() {
             return queue.pollFirst();
         }
 
-        /** @return whether we have a next smallest number */
+        /**
+         * @return whether we have a next smallest number
+         */
         public boolean hasNext() {
-            if (queue.isEmpty()){
+            if (queue.isEmpty()) {
                 return false;
             }
             return true;
         }
 
-        public void helper(TreeNode root){
-            if (root == null){
+        //递归将整个二叉搜索树通过中序遍历放入双端队列queue中
+        public void helper(TreeNode root) {
+            if (root == null) {
                 return;
             }
             helper(root.left);
@@ -51,5 +57,4 @@ public class LeetCode173 {
             helper(root.right);
         }
     }
-
 }

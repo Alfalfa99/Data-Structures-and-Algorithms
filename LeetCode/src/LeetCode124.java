@@ -20,6 +20,7 @@ public class LeetCode124 {
         if (root == null){
             return 0;
         }
+        //后序遍历然后返回经过当前节点的最大值
         //如果左子树是负的或右子树是负的就不选
         int leftVal = Math.max(DFS(root.left),0);
         int rightVal = Math.max(DFS(root.right),0);
