@@ -1,7 +1,7 @@
 
 M
 java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8·‘“­­.
-I
-java:S1128",Remove this unused import 'java.util.Queue'.(Äá™ô8úâœ­­.
 ^
 java:S1126,"AReplace this if-then-else statement by a single return statement.(›¦ƒ8’Ú£­­.
+I
+java:S1128",Remove this unused import 'java.util.Queue'.(Äá™ô8úâœ­­.
