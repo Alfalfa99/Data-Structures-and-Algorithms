@@ -5450,6 +5450,30 @@ public static int maxPathSum(TreeNode root) {
 
 
 
+### 面试题 04.04. 	判断是否为平衡二叉树
+
+```java
+public boolean isBalanced(TreeNode root) {
+        if (root == null){
+            return true;
+        }
+        return helper(root, 0) == Integer.MAX_VALUE? false:true;
+    }
+
+    public int helper(TreeNode root, int depth){
+        if (root == null){
+            return depth;
+        }
+        int leftVal = helper(root.left, depth+1);
+        int rightVal = helper(root.right, depth+1);
+        if (Math.abs(leftVal - rightVal) > 1){
+            return Integer.MAX_VALUE;
+        } else {
+            return Math.max(leftVal,rightVal);
+        }
+    }
+```
+
 
 
 
@@ -5763,4 +5787,30 @@ public int firstBadVersion(int n) {
 ```
 
 
+
+
+
+
+
+
+
+## 动态规划
+
+### 139.	单词拆分
+
+```java
+public boolean wordBreak(String s, List<String> wordDict) {
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
+```
 
