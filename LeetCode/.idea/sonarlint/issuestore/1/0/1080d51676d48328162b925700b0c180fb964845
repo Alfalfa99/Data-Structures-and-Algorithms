@@ -1,8 +1,0 @@
-
-r	java:S117
-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ðœã‰øÿÿÿÿ8Ù›ª¦¥.
-C
-java:S1659"!Declare "ans" on a separate line.(¥Þêüüÿÿÿÿ8Ù›ª¦¥.
-r	java:S117
-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ðœã‰øÿÿÿÿ8Ù›ª¦¥.
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À‰öž8ÑÓ¬¦¥.
