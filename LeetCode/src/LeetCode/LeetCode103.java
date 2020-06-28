@@ -1,5 +1,7 @@
 package LeetCode;
 
+import util.TreeNode;
+
 import java.util.*;
 
 public class LeetCode103 {

@@ -1,5 +1,5 @@
 package JZoffer;
-
+import util.ListNode;
 public class JZoffer52 {
     public static void main(String[] args) {
         int[] nums = new int[]{4,5,6,7};

@@ -1,0 +1,8 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡áº´úÿÿÿÿ
+W
+java:S1126."AReplace this if-then-else statement by a single return statement.(›¦ƒ
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+B
+java:S1128",Remove this unused import 'java.util.Queue'.(Äá™ô

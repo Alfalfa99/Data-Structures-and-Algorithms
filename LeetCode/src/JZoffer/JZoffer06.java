@@ -1,5 +1,7 @@
 package JZoffer;
 
+import util.ListNode;
+
 public class JZoffer06 {
     public static void main(String[] args) {
         ListNode head = new ListNode(1);

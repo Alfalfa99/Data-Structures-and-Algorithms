@@ -1,5 +1,7 @@
 package JZoffer;
 
+import util.TreeNode;
+
 public class JZoffer55_1 {
 
 

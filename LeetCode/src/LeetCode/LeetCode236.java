@@ -1,5 +1,5 @@
 package LeetCode;
-
+import util.TreeNode;
 public class LeetCode236 {
     public static void main(String[] args) {
 
