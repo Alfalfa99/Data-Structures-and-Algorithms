@@ -2943,6 +2943,31 @@ public int[] getLeastNumbers(int[] arr, int k) {
 
 
 
+#### 215.	最大的第k个数(小顶堆)
+
+```java
+public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> heap = new PriorityQueue<>(k);
+        for (int i = 0; i < nums.length; i++) {
+            if (heap.isEmpty() || heap.size() < k) {
+                heap.offer(nums[i]);
+                continue;
+            }
+            if (heap.peek() < nums[i]){
+                heap.poll();
+                heap.offer(nums[i]);
+            }
+        }
+        return heap.peek();
+    }
+```
+
+
+
+
+
+
+
 #### offer41.	数据流中的中位数
 
 ```java
@@ -5851,6 +5876,127 @@ public int firstBadVersion(int n) {
 ```
 
 
+
+### 面试题 03_02	栈的最小值
+
+```java
+class MinStack {
+        Deque<Integer> normalStack;
+        Deque<Integer> smallStack;
+
+        /** initialize your data structure here. */
+        public MinStack() {
+            normalStack = new ArrayDeque<>();
+            smallStack = new ArrayDeque<>();
+        }
+        public void push(int x) {
+            if (smallStack.isEmpty() || smallStack.peekLast() >= x){
+                smallStack.offerLast(x);
+            }
+            normalStack.offerLast(x);
+        }
+
+        public void pop() {
+            if (normalStack.pollLast().equals(smallStack.peekLast())){
+                smallStack.pollLast();
+            }
+        }
+
+        public int top() {
+            return normalStack.peekLast();
+        }
+
+        public int getMin() {
+            return smallStack.peekLast();
+        }
+    }
+```
+
+
+
+### offer40.	最小的k个数(大顶堆)
+
+```java
+public int[] getLeastNumbers(int[] arr, int k) {
+        if (k == 0) {
+            return new int[0];
+        }
+        // 使用一个最大堆（大顶堆）
+        // Java 的 PriorityQueue 默认是小顶堆，添加 comparator 参数使其变成最大堆
+        Queue<Integer> heap = new PriorityQueue<>(k, (i1, i2) -> Integer.compare(i2, i1));
+
+        for (int e : arr) {
+            // 当前数字小于堆顶元素才会入堆
+            if (heap.isEmpty() || heap.size() < k || e < heap.peek()) {
+                heap.offer(e);
+            }
+            if (heap.size() > k) {
+                heap.poll(); // 删除堆顶最大元素
+            }
+        }
+
+        // 将堆中的元素存入数组
+        int[] res = new int[heap.size()];
+        int j = 0;
+        for (int e : heap) {
+            res[j++] = e;
+        }
+        return res;
+    }
+```
+
+
+
+
+
+### 215.	最大的第k个数(小顶堆)
+
+```java
+public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> heap = new PriorityQueue<>(k);
+        for (int i = 0; i < nums.length; i++) {
+            if (heap.isEmpty() || heap.size() < k) {
+                heap.offer(nums[i]);
+                continue;
+            }
+            if (heap.peek() < nums[i]){
+                heap.poll();
+                heap.offer(nums[i]);
+            }
+        }
+        return heap.peek();
+    }
+```
+
+
+
+
+
+
+
+### offer41.	数据流中的中位数
+
+```java
+class MedianFinder {
+        Queue<Integer> A, B;
+        public MedianFinder() {
+            A = new PriorityQueue<>(); // 小顶堆，保存较大的一半
+            B = new PriorityQueue<>((x, y) -> (y - x)); // 大顶堆，保存较小的一半
+        }
+        public void addNum(int num) {
+            if(A.size() != B.size()) {
+                A.add(num);
+                B.add(A.poll());
+            } else {
+                B.add(num);
+                A.add(B.poll());
+            }
+        }
+        public double findMedian() {
+            return A.size() != B.size() ? A.peek() : (A.peek() + B.peek()) / 2.0;
+        }
+    }
+```
 
 
 
