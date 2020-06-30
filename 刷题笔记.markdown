@@ -5845,6 +5845,24 @@ public static String addBinary(String a, String b) {
 
 
 
+### 771.	宝石与石头
+
+```java
+public int numJewelsInStones(String J, String S) {
+        char[] chars = S.toCharArray();
+        char[] chars1 = J.toCharArray();
+        char[] charchar = new char[128];
+        int count = 0;
+        for (char aChar : chars) {
+            charchar[aChar]++;
+        }
+        for (char c : chars1) {
+            count += charchar[c];
+        }
+        return count;
+    }
+```
+
 
 
 
