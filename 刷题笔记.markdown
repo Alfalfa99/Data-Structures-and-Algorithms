@@ -5535,6 +5535,44 @@ public boolean isBalanced(TreeNode root) {
 
 
 
+### 501.	二叉搜索树中的众数
+
+```java
+	int maxTimes = 0;
+    int thisTimes = 0;
+    List<Integer> res = new LinkedList<Integer>();
+    TreeNode pre = null;
+    public int[] findMode(TreeNode root) {
+        inOrder(root);
+        int length = res.size();
+        int[] rr = new int[length];
+        for(int i = 0; i < length; i++) {
+            rr[i] = res.get(i);
+        }
+        return rr;
+    }
+    public void inOrder(TreeNode root) {
+        if(root == null) {
+            return;
+        }
+        inOrder(root.left);
+        if(pre != null && pre.val == root.val) {
+            thisTimes++;
+        } else {
+            thisTimes = 1;
+        }
+        if(thisTimes == maxTimes) {
+            res.add(root.val);
+        } else if(thisTimes > maxTimes) {
+            maxTimes = thisTimes;
+            res.clear();
+            res.add(root.val);
+        }
+        pre = root;
+        inOrder(root.right);
+    }
+```
+
 
 
 
@@ -6015,6 +6053,34 @@ class MedianFinder {
         }
     }
 ```
+
+
+
+### 378.	有序矩阵中第K小的数
+
+```java
+PriorityQueue<Integer> MaxPQ = new PriorityQueue<>(Collections.reverseOrder());
+        for (int[] row : matrix) {
+            for (int num : row) {
+                if (MaxPQ.size() == k && num > MaxPQ.peek()) {
+                    break;
+                }
+                MaxPQ.add(num);
+                if (MaxPQ.size() > k) {
+                    MaxPQ.remove();
+                }
+            }
+        }
+        return MaxPQ.remove();
+```
+
+
+
+
+
+
+
+
 
 
 
