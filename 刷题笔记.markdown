@@ -6059,7 +6059,8 @@ class MedianFinder {
 ### 378.	有序矩阵中第K小的数
 
 ```java
-PriorityQueue<Integer> MaxPQ = new PriorityQueue<>(Collections.reverseOrder());
+public int kthSmallest(int[][] matrix, int k) {
+        PriorityQueue<Integer> MaxPQ = new PriorityQueue<>(Collections.reverseOrder());
         for (int[] row : matrix) {
             for (int num : row) {
                 if (MaxPQ.size() == k && num > MaxPQ.peek()) {
@@ -6072,11 +6073,41 @@ PriorityQueue<Integer> MaxPQ = new PriorityQueue<>(Collections.reverseOrder());
             }
         }
         return MaxPQ.remove();
+    }
 ```
 
 
 
 
+
+### 147.	对链表进行插入排序
+
+```java
+public ListNode insertionSortList(ListNode head) {
+        ListNode virtual_head = new ListNode(Integer.MIN_VALUE);
+        virtual_head.next = head;
+        ListNode cur = virtual_head.next;
+        ListNode pre = virtual_head;
+        while (cur != null) {
+            if (cur.val < pre.val) {
+                ListNode nowPre = virtual_head;
+                ListNode nowCur = virtual_head.next;
+                while (nowCur != cur && nowCur.val < cur.val) {
+                    nowCur = nowCur.next;
+                    nowPre = nowPre.next;
+                }
+                pre.next = cur.next;
+                nowPre.next = cur;
+                cur.next = nowCur;
+                cur = pre.next;
+            } else {
+                cur = cur.next;
+                pre = pre.next;
+            }
+        }
+        return virtual_head.next;
+    }
+```
 
 
 
