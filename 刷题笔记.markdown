@@ -5598,6 +5598,28 @@ public boolean isBalanced(TreeNode root) {
 
 
 
+### 114.	将二叉树展开为链表
+
+```java
+ public void flatten(TreeNode root) {
+        helper(root);
+    }
+
+    TreeNode pre = null;
+    void helper(TreeNode root) {
+        if(root==null) {
+            return;
+        }
+        //右节点-左节点-根节点 这种顺序正好跟前序遍历相反
+        //用pre节点作为媒介，将遍历到的节点前后串联起来
+        helper(root.right);
+        helper(root.left);
+        root.left = null;
+        root.right = pre;
+        pre = root;
+    }
+```
+
 
 
 
