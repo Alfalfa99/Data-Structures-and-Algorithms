@@ -1,38 +1,26 @@
 package LeetCode;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * @author 15423
+ */
 public class LeetCode1481 {
     public static void main(String[] args) {
-
+        for (int i : divingBoard(1, 1, 10000)) {
+            System.out.println(i);
+        }
     }
 
-    public int findLeastNumOfUniqueInts(int[] arr, int k) {
-        Map<Integer, Integer> map = new HashMap<>();//map来存储每个数字的次数
-        for(int num : arr){
-            map.put(num, map.getOrDefault(num, 0) + 1);//map的这个用法经常用到，getOrDefault
+    public static int[] divingBoard(int shorter, int longer, int k) {
+        if (k == 0){
+            return new int[0];
         }
-        int size = map.size();
-        int[] cnt = new int[size];
-        int m = 0;
-        // 用keySet把每一个key取出来，然后用map.get(key)来取值
-        // 之前用Map.Entry方法，感觉更繁琐
-        for(int key : map.keySet()){
-            cnt[m++] = map.get(key);
+        if (shorter == longer){
+            return new int[]{shorter*k};
         }
-        Arrays.sort(cnt);
-        // 排序之后，从小到大，如果k大于这个数字次数，那么这个数字就可以移除
-        // 否则就break
-        for(int c : cnt){
-            if(k >= c){
-                k -= c;
-                size--;
-            }else{
-                break;
-            }
+        int[] res = new int[k+1];
+        for(int i=0;i<=k;i++) {
+            res[i] =  shorter * (k-i) + longer*i;
         }
-        return size;
+        return res;
     }
 }

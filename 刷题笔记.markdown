@@ -5105,6 +5105,62 @@ public int findLeastNumOfUniqueInts(int[] arr, int k) {
 
 
 
+### 1291.	顺次数
+
+```java
+public List<Integer> sequentialDigits(int low, int high) {
+        List<Integer> res = new ArrayList<>();
+        for(int i = 1; i <= 9; i++){
+            int num = i;
+            for(int j = i+1;j <= 9; j++){
+                num = num*10+j;
+                if(num>=high){
+                    break;
+                }
+                if(num>= low && num<= high){
+                    res.add(num);
+                }
+            }
+        }
+        Collections.sort(res);
+        return res;
+    }
+```
+
+
+
+### 1481.	跳水板
+
+```java
+public int[] divingBoard(int shorter, int longer, int k) {
+        if (k == 0){
+            return new int[0];
+        }
+        if (shorter == longer){
+            return new int[]{shorter*k};
+        }
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        int sum = 0;
+        for (int i = k; i >= 0; i--) {
+            sum = shorter * i + longer * (k - i);
+            arrayList.add(sum);
+        }
+        int[] res = new int[arrayList.size()];
+        for (int i = 0; i < arrayList.size(); i++) {
+            res[i] = arrayList.get(i);
+        }
+        return res;
+    }
+```
+
+
+
+
+
+
+
+
+
 
 
 
