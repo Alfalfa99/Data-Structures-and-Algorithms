@@ -6047,6 +6047,67 @@ public int numJewelsInStones(String J, String S) {
 
 
 
+### 6.	Z字变换
+
+```java
+public String convert(String s, int numRows) {
+        if(numRows < 2){
+            return s;
+        }
+        List<StringBuilder> rows = new ArrayList<StringBuilder>();
+        for(int i = 0; i < numRows; i++){
+            rows.add(new StringBuilder());
+        }
+        int i = 0, flag = -1;
+        for(char c : s.toCharArray()) {
+            rows.get(i).append(c);
+            if(i == 0 || i == numRows -1){
+                flag = - flag;
+            }
+            i += flag;
+        }
+        StringBuilder res = new StringBuilder();
+        for(StringBuilder row : rows){
+            res.append(row);
+        }
+        return res.toString();
+    }
+```
+
+
+
+
+
+
+
+
+
+
+
+### 面试题 17.17.	恢复空格(字典查词)
+
+```java
+public int respace(String[] dictionary, String sentence) {
+         int n = sentence.length();
+        int m = dictionary.length;
+        int[] dp = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            dp[i] = dp[i-1];
+            for (int j = 0; j < m ; j++) {
+                if (i < dictionary[j].length()) continue;
+                if (sentence.substring(i - dictionary[j].length(), i).equals(dictionary[j])) {
+                    dp[i] = Math.max(dp[i - dictionary[j].length()] + dictionary[j].length(), dp[i]);
+                }
+            }
+        }
+        return n - dp[n];
+    }
+```
+
+
+
+
+
 
 
 ## 排序与查找
