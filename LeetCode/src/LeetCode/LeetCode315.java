@@ -1,8 +1,9 @@
 package LeetCode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LeetCode0_Test {
+public class LeetCode315 {
     public static void main(String[] args) {
         int[] nums = new int[]{2,0,1};
         for (Integer integer : countSmaller(nums)) {
