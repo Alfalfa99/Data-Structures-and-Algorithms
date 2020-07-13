@@ -1,8 +1,8 @@
 package LeetCode;
 
-import java.util.*;
+import java.util.Arrays;
 
-public class LeetCode0_Test {
+public class LeetCode350 {
     public static void main(String[] args) {
 
     }
