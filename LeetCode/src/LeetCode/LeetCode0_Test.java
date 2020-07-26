@@ -6,17 +6,35 @@ public class LeetCode0_Test {
     public static void main(String[] args) {
 
     }
-
-    public int minimumTotal(List<List<Integer>> triangle) {
-        int height = triangle.size();
-        if (height == 0){
+    public static int height;
+    public static int width;
+    public static int[][] matri = null;
+    public static int longestIncreasingPath(int[][] matrix) {
+        if(matrix.length == 0 || matrix[0].length == 0){
             return 0;
         }
-        for (int i = height-2; i >= 0 ; i--) {
-            for (int j = 0; j < triangle.get(i).size(); j++) {
-                triangle.get(i).set(j,triangle.get(i).get(j)+Math.min(triangle.get(i+1).get(j),triangle.get(i+1).get(j+1)));
+        matri = matrix;
+        height = matrix.length;
+        width = matrix[0].length;
+        int max = 0;
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                max = Math.max(dfs(0,i,j,Integer.MIN_VALUE),max);
             }
         }
-        return triangle.get(0).get(0);
+        return max;
+    }
+    public static int dfs(int maxLen,int i, int j, int lastVal){
+        if (i < 0 || i >= height || j < 0 || j >= width){
+            return maxLen;
+        }
+        int curVal = matri[i][j];
+        if (curVal <= lastVal){
+            return maxLen;
+        }
+        return Math.max(dfs(maxLen+1, i+1, j, curVal),
+                Math.max(dfs(maxLen+1, i-1, j, curVal),
+                        Math.max(dfs(maxLen+1, i, j+1, curVal),
+                                dfs(maxLen+1, i, j-1, curVal))));
     }
 }
