@@ -1,8 +1,6 @@
 package LeetCode;
 
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode392 {
     public static void main(String[] args) {
         System.out.println(isSubsequence("abc","adfbfc"));
     }
