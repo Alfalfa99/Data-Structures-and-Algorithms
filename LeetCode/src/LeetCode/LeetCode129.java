@@ -2,9 +2,7 @@ package LeetCode;
 
 import util.TreeNode;
 
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode129 {
     public static void main(String[] args) {
         TreeNode treeNode = new TreeNode(4);
         treeNode.left = new TreeNode(9);
