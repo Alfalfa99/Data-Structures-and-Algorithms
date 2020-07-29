@@ -5236,6 +5236,42 @@ public List<Integer> luckyNumbers (int[][] matrix) {
 
 
 
+### 36.	判断是否为有效数独
+
+```java
+// 9*9的数独
+    private final int L = 9;
+    public boolean isValidSudoku(char[][] board) {
+        //rows[i][j]  用于判断整个大数独中第i列是否已经出现了j这个数
+        boolean[][] rows = new boolean[L][L];
+        //cols[i][j]  用于判断整个大数独中第i行是否已经出现了j这个数
+        boolean[][] cols = new boolean[L][L];
+        //boxes[i][j] 用于判断第i个3*3的方块内是否存在了j这个数
+        // (数独的特性,一个3*3方块中不能出现两个相同的数)
+        boolean[][] boxes = new boolean[L][L];
+
+        for (int r = 0; r < L; ++r) {
+            for (int c = 0; c < L; ++c) {
+                if (board[r][c] != '.') {
+                    //判断该数的值
+                    int value = board[r][c] - '1';
+                    //判断该数在哪个方块中
+                    int boxIndex = r / 3 * 3 + c / 3;
+                    //但凡不满足三个条件其一则说明该数独肯定不合规
+                    if (rows[r][value] || cols[c][value] || boxes[boxIndex][value]) {
+                        return false;
+                    }
+                    //设置为true继续进行下一个判断
+                    rows[r][value] = true;
+                    cols[c][value] = true;
+                    boxes[boxIndex][value] = true;
+                }
+            }
+        }
+        return true;
+    }
+```
+
 
 
 
@@ -6862,6 +6898,36 @@ public int findLongestChain(int[][] pairs) {
          return max;
     }
 ```
+
+
+
+### 264.	丑数2
+
+```java
+public int nthUglyNumber(int n) {
+        int a = 0, b= 0,c = 0;
+        int[] dp = new int[n];
+        dp[0] = 1;
+        for(int i = 1; i < n; i++){
+            int ac = dp[a] * 2, bc = dp[b] * 3, cc = dp[c] * 5;
+            dp[i] = Math.min(Math.min(ac,bc),cc);
+            if (dp[i] == ac){
+                a++;
+            }
+            if(dp[i] == bc){
+                b++;
+            }
+            if(dp[i] == cc){
+                c++;
+            }
+        }
+        return dp[n-1];
+    }
+```
+
+
+
+
 
 
 

@@ -11,11 +11,12 @@ public class LeetCode129 {
         treeNode.right = new TreeNode(1);
         System.out.println(sumNumbers(treeNode));
     }
+
     public static int sumNumbers(TreeNode root) {
         return helper(root, 0);
     }
 
-    public static int helper(TreeNode root, int i){
+    public static int helper(TreeNode root, int i) {
         if (root == null) {
             return 0;
         }
