@@ -1,10 +1,8 @@
 package LeetCode;
 
-import util.TreeNode;
+import java.util.Stack;
 
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode42 {
     public int trap(int[] height) {
         if (height == null) {
             return 0;
