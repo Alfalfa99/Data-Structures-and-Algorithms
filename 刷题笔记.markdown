@@ -5884,7 +5884,6 @@ public boolean isBalanced(TreeNode root) {
  public void flatten(TreeNode root) {
         helper(root);
     }
-
     TreeNode pre = null;
     void helper(TreeNode root) {
         if(root==null) {
