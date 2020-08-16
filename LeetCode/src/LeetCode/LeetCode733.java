@@ -1,10 +1,6 @@
 package LeetCode;
 
-import util.TreeNode;
-
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode733 {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int originColor = image[sr][sc];
         // 如果颜色相同则不处理
