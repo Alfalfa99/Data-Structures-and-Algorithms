@@ -1,10 +1,6 @@
 package LeetCode;
 
-import util.TreeNode;
-
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode647 {
     public int countSubstrings(String s) {
         int n = s.length(), ans = 0;
         for (int i = 0; i < 2 * n - 1; ++i) {
