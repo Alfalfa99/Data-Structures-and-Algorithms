@@ -1,10 +1,6 @@
 package LeetCode;
 
-import util.TreeNode;
-
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode529 {
     int[] dirX = {0, 1, 0, -1, 1, 1, -1, -1};
     int[] dirY = {1, 0, -1, 0, 1, -1, 1, -1};
 

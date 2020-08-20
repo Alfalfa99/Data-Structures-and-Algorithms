@@ -5424,6 +5424,59 @@ public boolean canFinish(int numCourses, int[][] prerequisites) {
 
 
 
+### 529.	扫雷(模拟+DFS)
+
+```java
+    //模拟一块地的八个方向
+    int[] dirX = {0, 1, 0, -1, 1, 1, -1, -1};
+    int[] dirY = {1, 0, -1, 0, 1, -1, 1, -1};
+   
+    public char[][] updateBoard(char[][] board, int[] click) {
+        int x = click[0], y = click[1];
+        if (board[x][y] == 'M') {
+            // 规则 1:如果踩到雷直接退出
+            board[x][y] = 'X';
+        } else{
+            dfs(board, x, y);
+        }
+        return board;
+    }
+
+    public void dfs(char[][] board, int x, int y) {
+        int cnt = 0;
+        for (int i = 0; i < 8; ++i) {
+            int tx = x + dirX[i];
+            int ty = y + dirY[i];
+            if (tx < 0 || tx >= board.length || ty < 0 || ty >= board[0].length) {
+                continue;
+            }
+            // 不用判断 M，因为如果有 M 的话游戏已经结束了
+            //如果踩得格子的旁边有地雷则自己这格的数字+1
+            if (board[tx][ty] == 'M') {
+                ++cnt;
+            }
+        }
+        //如果附近有地雷,则把附近地雷数写在自己格子上
+        if (cnt > 0) {
+            // 规则 3
+            board[x][y] = (char) (cnt + '0');
+        } else {
+            // 规则 2:如果附近没地雷则把相邻的非炸弹格子翻开
+            // 因为当前格子附近没有地雷,所以写上'B'
+            board[x][y] = 'B';
+            for (int i = 0; i < 8; ++i) {
+                int tx = x + dirX[i];
+                int ty = y + dirY[i];
+                // 这里不需要在存在 B 的时候继续扩展，因为 B 之前被点击的时候已经被扩展过了
+                if (tx < 0 || tx >= board.length || ty < 0 || ty >= board[0].length || board[tx][ty] != 'E'){
+                    continue;
+                }
+                dfs(board, tx, ty);
+            }
+        }
+    }
+```
+
 
 
 
