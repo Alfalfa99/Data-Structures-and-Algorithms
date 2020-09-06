@@ -1,10 +1,10 @@
 package LeetCode;
 
-import util.TreeNode;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.PriorityQueue;
 
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode374 {
     public static void main(String[] args) {
 
     }
