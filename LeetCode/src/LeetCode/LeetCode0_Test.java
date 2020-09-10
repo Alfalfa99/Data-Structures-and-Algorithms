@@ -6,41 +6,32 @@ import java.util.*;
 
 public class LeetCode0_Test {
     public static void main(String[] args) {
+        System.out.println(strStr("mississippi","issip"));
 
     }
-    public int[] topKFrequent(int[] nums, int k) {
-        // 使用字典，统计每个元素出现的次数，元素为键，元素出现的次数为值
-        HashMap<Integer,Integer> map = new HashMap();
-        for(int num : nums){
-            if (map.containsKey(num)) {
-                map.put(num, map.get(num) + 1);
-            } else {
-                map.put(num, 1);
+    public static int strStr(String haystack, String needle) {
+        int hLen = haystack.length();
+        int nLen = needle.length();
+        if(nLen == 0){
+            return 0;
+        }
+        int res = -2;
+        char[] hay = haystack.toCharArray();
+        char[] nel = needle.toCharArray();
+        for(int i = 0,j = 0; i< hLen; i++){
+            if(hay[i] == nel[j]){
+                j++;
+                if(res == -2){
+                    res = i;
+                }
+            } else{
+                j = 0;
+                res = -2;
+            }
+            if(j == nLen){
+                return res;
             }
         }
-        // 遍历map，用最小堆保存频率最大的k个元素
-        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer a, Integer b) {
-                return map.get(a) - map.get(b);
-            }
-        });
-        for (Integer key : map.keySet()) {
-            if (pq.size() < k) {
-                pq.add(key);
-            } else if (map.get(key) > map.get(pq.peek())) {
-                pq.remove();
-                pq.add(key);
-            }
-        }
-        // 取出最小堆中的元素
-        int[] res = new int[k];
-        int i = 0;
-        while (!pq.isEmpty()) {
-            res[i] = pq.remove();
-            i++;
-        }
-
-        return res;
+        return -1;
     }
 }
