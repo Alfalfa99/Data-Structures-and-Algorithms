@@ -2,9 +2,10 @@ package LeetCode;
 
 import util.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LeetCode0_Test {
+public class LeetCode94 {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         midInterator(root, res);
