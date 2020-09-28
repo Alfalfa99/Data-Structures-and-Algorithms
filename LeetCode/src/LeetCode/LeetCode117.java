@@ -1,11 +1,10 @@
 package LeetCode;
 
 
-import util.TreeNode;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode117 {
     Deque<Node> curNodeQueue = new ArrayDeque<>();
     public Node connect(Node root) {
         if(root == null){
