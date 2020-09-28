@@ -1,34 +1,9 @@
 package LeetCode;
 
+import java.util.ArrayList;
+import java.util.List;
 
-import util.TreeNode;
-
-import java.util.*;
-
-public class LeetCode0_Test {
-<<<<<<< Updated upstream
-    Deque<Node> curNodeQueue = new ArrayDeque<>();
-    public Node connect(Node root) {
-        if(root == null){
-            return root;
-        }
-        curNodeQueue.add(root);
-        int size = curNodeQueue.size();
-        while(size != 0){
-            Node curNode = null;
-            for (int i = 0; i < size; i++) {
-                Node node = curNodeQueue.pollFirst();
-                if(node.left != null){
-                    curNodeQueue.add(node.left);
-                }
-                if(node.right != null){
-                    curNodeQueue.add(node.right);
-                }
-                if(curNode != null){
-                    curNode.next = node;
-                }
-                curNode = node;
-=======
+public class LeetCode46 {
     public static void main(String[] args) {
         char[][] chars = new char[][]{{'a'}};
     }
@@ -60,34 +35,7 @@ public class LeetCode0_Test {
                 // 注意：下面这两行代码发生 「回溯」，回溯发生在从 深层结点 回到 浅层结点 的过程，代码在形式上和递归之前是对称的
                 used[i] = false;
                 path.remove(path.size() - 1);
->>>>>>> Stashed changes
             }
-            size = curNodeQueue.size();
-            curNode = null;
         }
-<<<<<<< Updated upstream
-        return root;
-=======
->>>>>>> Stashed changes
     }
-
-    class Node {
-        public int val;
-        public Node left;
-        public Node right;
-        public Node next;
-
-        public Node() {}
-
-        public Node(int _val) {
-            val = _val;
-        }
-
-        public Node(int _val, Node _left, Node _right, Node _next) {
-            val = _val;
-            left = _left;
-            right = _right;
-            next = _next;
-        }
-    };
 }
