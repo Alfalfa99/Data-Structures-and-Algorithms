@@ -1,23 +1,29 @@
 package LeetCode;
 
+import util.ListNode;
 import util.TreeNode;
 
 import java.util.*;
 
 public class LeetCode0_Test {
-    public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        midInterator(root, res);
-        return res;
-    }
+    public static void main(String[] args) {
 
-    public void midInterator(TreeNode node, List<Integer> res){
-        if(null == node){
+    }
+    static ListNode realHead;
+    public static ListNode reverseList(ListNode head) {
+        if(head == null){
+            return null;
+        }
+        dfs(head, head.next);
+        return realHead;
+    }
+    public static void dfs(ListNode pre, ListNode cur) {
+        if(cur == null){
             return;
         }
-        midInterator(node.left, res);
-        res.add(node.val);
-        midInterator(node.right,res);
-        return;
+        dfs(cur, cur.next);
+        realHead = cur;
+        cur.next = pre;
+        pre.next = null;
     }
 }
