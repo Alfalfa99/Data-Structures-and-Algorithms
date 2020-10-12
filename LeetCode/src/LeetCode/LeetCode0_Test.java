@@ -7,39 +7,25 @@ import java.util.*;
 
 public class LeetCode0_Test {
     public static void main(String[] args) {
-        System.out.println(canPartition(new int[]{1,2,3,4,5,6,7}));
+        System.out.println(coinChange(new int[]{2, 5, 10, 1}, 27));
     }
 
-    public static boolean canPartition(int[] nums) {
-        if(nums.length == 0){
-            return false;
+    public static int coinChange(int[] coins, int amount) {
+        int len = coins.length;
+        if (len == 0){
+            return -1;
         }
-        int sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
-        }
-        if (sum % 2 != 0) {
-            return false;
-        }
-        int target = sum / 2;
-        boolean[][] dp = new boolean[nums.length][target + 1];
-        //初始化
-        if (nums[0] <= target) {
-            dp[0][nums[0]] = true;
-        }
-
-        for (int i = 1; i < nums.length; i++) {
-            for (int j = 0; j <= target; j++) {
-                dp[i][j] = dp[i - 1][j];
-                if (j == nums[i]) {
-                    dp[i][j] = true;
-                    continue;
-                }
-                if (nums[i] < j) {
-                    dp[i][j] = dp[i - 1][j - nums[i]] || dp[i - 1][j];
-                }
+        int[] dp = new int[amount+1];
+        Arrays.fill(dp,amount+1);
+        dp[0] = 0;
+        for(int coin : coins){
+            for(int i = coin; i <= amount; i++){
+                dp[i] = Math.min(dp[i],dp[i-coin]+1);
             }
         }
-        return dp[nums.length - 1][target];
+        if(dp[amount] == amount+1){
+            dp[amount] = -1;
+        }
+        return dp[amount];
     }
 }
