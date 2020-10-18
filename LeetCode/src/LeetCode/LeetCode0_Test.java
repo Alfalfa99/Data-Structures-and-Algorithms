@@ -1,33 +1,43 @@
 package LeetCode;
 
 
+import java.util.*;
 
 public class LeetCode0_Test {
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        System.out.println(swapPairs(head));
-    }
-
-    static ListNode pre = null, virtual_head = new ListNode();
-
-    public static ListNode swapPairs(ListNode head) {
-        if ((head == null) || (head.next == null)) {
-            return head;
+        String[] A = new String[]{"bella", "label", "roller"};
+        for (String s : commonChars(A)) {
+            System.out.printf("%s", s);
         }
-
-        // Nodes to be swapped
-        ListNode firstNode = head;
-        ListNode secondNode = head.next;
-
-        // Swapping
-        firstNode.next  = swapPairs(secondNode.next);
-        secondNode.next = firstNode;
-
-        // Now the head is the second node
-        return secondNode;
     }
 
+    public static List<String> commonChars(String[] A) {
+        Map<Character, Integer> map = new HashMap<>();
+        if (A.length == 0) {
+            return null;
+        }
+        for (Character c : A[0].toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        for (int i = 1; i < A.length; i++) {
+            String str = A[i];
+            Map<Character, Integer> map2 = new HashMap<>();
+            for (Character c : str.toCharArray()) {
+                if (map.containsKey(c)) {
+                    map2.put(c, Math.min(map2.getOrDefault(c, 0) + 1, map.get(c)));
+                }
+            }
+            map = map2;
+        }
+        List<String> ans = new ArrayList<>();
+        for (Character c : map.keySet()) {
+            int num = map.get(c);
+            for (int i = 0; i < num; i++) {
+                ans.add(String.valueOf(c));
+            }
+        }
+        return ans;
+
+    }
 }
+
