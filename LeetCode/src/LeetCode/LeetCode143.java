@@ -3,9 +3,10 @@ package LeetCode;
 
 import util.ListNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LeetCode0_Test {
+public class LeetCode143 {
     public static void main(String[] args) {
         ListNode node = new ListNode(1);
         node.next = new ListNode(2);
