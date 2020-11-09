@@ -2,7 +2,6 @@ package LeetCode;
 
 
 import util.ListNode;
-
 import java.util.ArrayList;
 import java.util.List;
 
