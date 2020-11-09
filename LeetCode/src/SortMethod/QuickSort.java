@@ -1,4 +1,4 @@
-package LeetCode;
+package SortMethod;
 
 
 public class QuickSort {
@@ -10,7 +10,11 @@ public class QuickSort {
         }
     }
     public static void quickSort(int[] nums){
-        quickSortImpl(nums,0, nums.length-1);
+        if (nums != null || nums.length > 0){
+            quickSortImpl(nums,0, nums.length-1);
+        } else {
+            throw new RuntimeException("数组为空");
+        }
     }
     public static void quickSortImpl(int[] nums, int low, int high){
         if(low < high){
@@ -44,7 +48,7 @@ public class QuickSort {
             System.out.printf("%d   ",num);
         }
         System.out.println();
-        System.out.println("-------------" + low);
+        System.out.println("------------- Low: " + low);
         return low;
     }
 }
