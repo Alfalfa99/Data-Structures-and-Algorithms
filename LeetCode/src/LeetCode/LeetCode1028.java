@@ -2,7 +2,7 @@ package LeetCode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import util.TreeNode;
+import Tree.TreeNode;
 public class LeetCode1028 {
     public static void main(String[] args) {
         recoverFromPreorder("1-2--3999--4-5--6--7");

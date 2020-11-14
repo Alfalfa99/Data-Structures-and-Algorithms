@@ -1,11 +1,11 @@
-package LeetCode;
+package Tree;
 
 
-import Tree.TreeNode;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashMap;
 
-import java.util.*;
-
-public class LeetCode0_Test {
+public class BuildTreeByPostAndIn {
     public static void main(String[] args) {
         int[] postorder = new int[]{1, 2, 9, 15, 7, 20, 3};
         int[] inorder = new int[]{1, 9, 2, 3, 15, 20, 7};
@@ -50,7 +50,7 @@ public class LeetCode0_Test {
             TreeNode node = new TreeNode(post[postRight]);
             int midPosition = map.get(post[postRight]);
             //后序遍历：假设左子树的右边界为x，计算右子树的长度为[x+1,postRight-1]
-            //中序遍历：右子树长度为[mid+1,inRight];
+            //中序遍历：右子树长度为[mid+1,inRight]
             // postRight-1-(x+1) = inRight - (mid+1)
             node.left = toBuildTree(postLeft, postRight + midPosition - inRight - 1, inLeft, midPosition - 1);
             node.right = toBuildTree(postRight - inRight + midPosition, postRight - 1, midPosition + 1, inRight);

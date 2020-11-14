@@ -25,8 +25,6 @@ public class InsertSort {
             System.out.println();
             System.out.println("------");
         }
-
-        return;
     }
 }
 

@@ -5,9 +5,9 @@ public class JZoffer28 {
         TreeNode p = new TreeNode(1);
         p.left = new TreeNode(2);
         p.right = new TreeNode(2);
-//        p.left.left = new util.TreeNode(3);
+//        p.left.left = new Tree.TreeNode(3);
         p.left.right = new TreeNode(3);
-//        p.right.left = new util.TreeNode(4);
+//        p.right.left = new Tree.TreeNode(4);
         p.right.right = new TreeNode(3);
         System.out.println(isSymmetric(p));
     }

@@ -1,6 +1,6 @@
 package JZoffer;
 
-import util.TreeNode;
+import Tree.TreeNode;
 
 import java.util.PriorityQueue;
 

@@ -2,9 +2,8 @@ package LeetCode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.List;
-import java.util.Queue;
-import util.TreeNode;
+
+import Tree.TreeNode;
 public class LeetCode173 {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(7);

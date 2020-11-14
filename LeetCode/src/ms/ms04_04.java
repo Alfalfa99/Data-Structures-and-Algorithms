@@ -1,6 +1,6 @@
 package ms;
 
-import util.TreeNode;
+import Tree.TreeNode;
 
 /**
  * @author 苜蓿

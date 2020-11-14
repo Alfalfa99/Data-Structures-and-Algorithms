@@ -1,10 +1,8 @@
 package JZoffer;
 
-import util.TreeNode;
+import Tree.TreeNode;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -19,13 +17,13 @@ public class JZoffer34 {
         root.left.left = new TreeNode(1);
         root.left.right = new TreeNode(3);
         root.right.left = new TreeNode(-2);
-//        root.right.right = new util.TreeNode(4);
+//        root.right.right = new Tree.TreeNode(4);
         root.left.left.left = new TreeNode(-1);
-//        root.left.left.right = new util.TreeNode(2);
-//        root.right.right.left = new util.TreeNode(5);
-//        root.right.right.right = new util.TreeNode(1);
-//        util.TreeNode root = new util.TreeNode(-2);
-//        root.right = new util.TreeNode(-3);
+//        root.left.left.right = new Tree.TreeNode(2);
+//        root.right.right.left = new Tree.TreeNode(5);
+//        root.right.right.right = new Tree.TreeNode(1);
+//        Tree.TreeNode root = new Tree.TreeNode(-2);
+//        root.right = new Tree.TreeNode(-3);
         System.out.println(pathSum(root, -1));
     }
 

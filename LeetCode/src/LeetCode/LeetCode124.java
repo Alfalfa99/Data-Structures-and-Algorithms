@@ -1,5 +1,5 @@
 package LeetCode;
-import util.TreeNode;
+import Tree.TreeNode;
 public class LeetCode124 {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(-10);
@@ -7,9 +7,9 @@ public class LeetCode124 {
         root.right = new TreeNode(20);
         root.right.left = new TreeNode(15);
         root.right.right = new TreeNode(7);
-//        util.TreeNode root = new util.TreeNode(1);
-//        root.left = new util.TreeNode(2);
-//        root.right = new util.TreeNode(3);
+//        Tree.TreeNode root = new Tree.TreeNode(1);
+//        root.left = new Tree.TreeNode(2);
+//        root.right = new Tree.TreeNode(3);
         System.out.println(maxPathSum(root));
     }
     static int max_num = Integer.MIN_VALUE;

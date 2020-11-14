@@ -7,11 +7,11 @@ public class LeetCode110 {
         p.right = new TreeNode(3);
         p.left.left = new TreeNode(4);
         p.left.left.left = new TreeNode(5);
-//        p.left.right = new util.TreeNode(3);
-//        p.right.left = new util.TreeNode(15);
+//        p.left.right = new Tree.TreeNode(3);
+//        p.right.left = new Tree.TreeNode(15);
         p.right.right = new TreeNode(6);
         p.right.right.right = new TreeNode(7);
-//        p.right.right.right.right = new util.TreeNode(1222);
+//        p.right.right.right.right = new Tree.TreeNode(1222);
         System.out.println(isBalanced(p));
     }
 

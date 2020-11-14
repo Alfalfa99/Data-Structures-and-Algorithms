@@ -1,6 +1,6 @@
 package LeetCode;
 
-import util.TreeNode;
+import Tree.TreeNode;
 
 public class LeetCode968 {
     public static void main(String[] args) {

@@ -9,8 +9,8 @@ public class LeetCode108 {
         TreeNode p = new TreeNode(3);
         p.left = new TreeNode(9);
         p.right = new TreeNode(20);
-//        p.left.left = new util.TreeNode(3);
-//        p.left.right = new util.TreeNode(3);
+//        p.left.left = new Tree.TreeNode(3);
+//        p.left.right = new Tree.TreeNode(3);
         p.right.left = new TreeNode(15);
         p.right.right = new TreeNode(7);
     }
