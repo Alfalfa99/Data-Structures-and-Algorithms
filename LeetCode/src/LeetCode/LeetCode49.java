@@ -1,11 +1,9 @@
 package LeetCode;
 
 
-import Tree.TreeNode;
-
 import java.util.*;
 
-public class LeetCode0_Test {
+public class LeetCode49 {
     public static void main(String[] args) {
         String[] strs = new String[]{"stop","pots","reed","","tops","deer","opts",""};
         Solution solution = new Solution();

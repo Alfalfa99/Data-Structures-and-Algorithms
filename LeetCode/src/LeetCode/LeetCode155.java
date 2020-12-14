@@ -4,39 +4,49 @@ import java.util.Stack;
 
 public class LeetCode155 {
     public static void main(String[] args) {
-
+        MinStack minStack = new MinStack();
+        minStack.push(512);
+        minStack.push(-1024);
+        minStack.push(-1024);
+        minStack.push(512);
+        minStack.pop();
+        System.out.println(minStack.getMin());
+        minStack.pop();
+        System.out.println(minStack.getMin());
+        minStack.pop();
+        System.out.println(minStack.getMin());
     }
 
 
-    class MinStack {
-        Stack<Integer> stack;
-        int min;
+    static class MinStack {
+        Stack<Integer> minStack;
+        Stack<Integer> listStack;
         /** initialize your data structure here. */
         public MinStack() {
-            stack = new Stack();
-            min = Integer.MAX_VALUE;
+            minStack = new Stack<>();
+            listStack = new Stack<>();
         }
-
         public void push(int x) {
-            if(min >= x){
-                stack.push(min);
-                min = x;
+            if(minStack.isEmpty()){
+                minStack.push(x);
+            } else if(minStack.peek() >= x){
+                minStack.push(x);
             }
-            stack.push(x);
+            listStack.push(x);
         }
 
         public void pop() {
-            if(min == stack.pop()){
-                min = stack.pop();
+            if(minStack.peek().equals(listStack.pop())){
+                minStack.pop();
             }
         }
 
         public int top() {
-            return stack.peek();
+            return listStack.peek();
         }
 
         public int getMin() {
-            return min;
+            return minStack.peek();
         }
     }
 }
