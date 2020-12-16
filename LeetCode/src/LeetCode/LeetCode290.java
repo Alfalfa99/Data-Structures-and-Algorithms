@@ -1,11 +1,9 @@
 package LeetCode;
 
 
-import Tree.TreeNode;
+import java.util.HashMap;
 
-import java.util.*;
-
-public class LeetCode0_Test {
+public class LeetCode290 {
     public static void main(String[] args) {
         String pattern = "abba";
         String str = "dog cat cat dog";
