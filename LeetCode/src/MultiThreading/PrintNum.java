@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class PrintNum {
     private static volatile int i = 1;
-    private static final Object lock = new Object();
+    private static final Object LOCK = new Object();
     public static void main(String[] args) {
         TestThread t = new TestThread();
         Thread t1 = new Thread(t);
@@ -30,17 +30,17 @@ public class PrintNum {
 
         @Override
         public void run() {
-            synchronized (lock){
+            synchronized (LOCK){
                 while(i <= 100){
-                    lock.notifyAll();
+                    LOCK.notifyAll();
                     System.out.println(Thread.currentThread().getName() + ": " + i++);
                     try {
-                        lock.wait();
+                        LOCK.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                lock.notifyAll();
+                LOCK.notifyAll();
             }
         }
     }
